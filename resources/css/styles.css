@@ -1,0 +1,47 @@
+HTML, body {
+	width: 100%;
+	height: 100%
+}
+
+iframe {
+	
+	width: 100%;
+	height: 99%;
+	border: 0px;
+}
+
+ body {
+    overflow-x: hidden;
+ }
+
+.container {
+	width: 100%;
+	height: 100%;
+	padding-right: 0px;
+}
+
+.hCont,
+.container-fluid{
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.container img{
+	margin: 10px;
+}
+
+.loading {
+	background-color:white;
+	position:absolute;
+	text-align:center;
+	padding:65px;
+	width:100%;
+	height: 100%;
+	z-index:1;
+	filter:alpha(opacity=60);
+	float:left;
+	-moz-opacity:.60;
+	opacity:.60;
+}
+

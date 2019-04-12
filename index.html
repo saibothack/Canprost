@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Documento sin títulos</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="icon" type="image/x-icon" href="/canprost/resources/img/favicon.ico" />
+	<!-- Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+	<!--Eestilos-->
+	<link href="resources/css/global.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		.divHover{height: 100% !Important; opacity: .4;}
+		.divOut{height: 100% !Important; opacity: .9;}
+	</style>
+	
+</head>
+
+<body class="body">
+	<div class="row row-index" id="divLog1">
+		<div class="col-md-4">&nbsp;</div>
+		<div class="col-md-4" OnMouseOver="cambiaOp('0')" onMouseOut="cambiaOpO('0')">
+			<fieldset class="fieldset-index divHover" id="divLog">
+				<center>
+					<h1>Solo personal autorizado</h1>
+					<p>Ingrese sus datos de acceso:</p>
+				</center>
+				<form class="form-horizontal" method="post" action="app/php/valida_user.php" style="width: 98% !Important; margin: auto; background-color: white; color: black; padding-bottom: 2px;" data-toggle="validator" role="form" id="frmH">
+					<br>
+					<div class="form-group">
+						<div id="divNombreUsuario">
+							<div class="col-sm-1"></div>
+							<label for="usuario" class="col-sm-3 control-label">Usuario&nbsp;<span class="required-label">*</span></label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" onFocus="cambiaOp('1')" onBlur="cambiaOpO('0')" id="usuario" name="usuario" placeholder="Usuario" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div id="divApellidos">
+							<div class="col-sm-1"></div>
+							<label for="pass" class="col-sm-3 control-label">Password &nbsp;<span class="required-label">*</span></label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" onFocus="cambiaOp('1')" onBlur="cambiaOpO('0')" id="pass" name="pass" placeholder="Password" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6"></div>
+						<div class="col-sm-3">
+							<input type="submit" class="btn btn-default" value="Ingresar">
+						</div>
+					</div>
+				</form>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<a href="home.php?ind=1">Registrar</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<a data-toggle="modal" data-target="#myModal">¿Olvido su contraseña?</a>
+						</div>
+					</div>
+			</fieldset>
+		</div>
+		<div class="col-md-2">&nbsp;</div>
+	</div>
+	
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-body">
+		  	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<form action="mipagina.php">
+				<div class="row">
+					<div class="col-md-offset-2 col-md-8">
+						<label>Escriba su correo para enviarle su información...</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-offset-2 col-md-8">
+						<input type="text" class="form-control" required name="correo">
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-md-offset-8 col-md-2">
+						<input type="submit" class="btn btn-default">
+					</div>
+				</div>
+			</form>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
+
+	<script>
+	function cambiaOp(ind){
+		if(ind == "0"){
+			jQuery("#divLog").removeClass("divHover")
+			jQuery("#divLog").addClass("divOut")
+		}else{
+			jQuery("#divLog").addClass("divOut")
+		}
+	}
+	function cambiaOpO(ind){
+		if(ind == "0"){
+			if($("#pass").is(":focus") || $("#usuario").is(":focus")){
+			}else{
+				jQuery("#divLog").removeClass("divOut")
+				jQuery("#divLog").addClass("divHover")
+			}
+		}else{
+			jQuery("#divLog").removeClass("divOut")
+		}
+	}
+	</script>
+</body>
+</html>

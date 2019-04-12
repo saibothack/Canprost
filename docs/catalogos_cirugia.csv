@@ -1,0 +1,142 @@
+﻿-1,22,6,6,2,Abordaje
+-1,22,12,12,2,Abordaje
+-1,22,16,16,2,Abordaje
+-1,22,24,24,2,Abordaje
+-1,23,1,Abierta,1,Otro
+-1,23,2, laparoscópica,1,Otro
+-1,23,3, robótica,1,Otro
+-1,24,1,Retropúbica,1,Abierta
+-1,24,2, Perineal,1,Abierta
+-1,24,3, Retrógrada,1,Abierta
+-1,24,4, Anterógrada,1,Abierta
+-1,25,1,Transperitoneal,1,Laparoscópica
+-1,25,2, Extraperitoneal,1,Laparoscópica
+-1,25,3, Extrafascial,1,Laparoscópica
+-1,25,4, Neuro-Preservadora Unilateral,1,Laparoscópica
+-1,25,5, Neuro-Preservadora Bilateral,1,Laparoscópica
+-1,26,1,Transperitoneal,1,Robótica
+-1,26,2, Extraperitoneal,1,Robótica
+-1,26,3, Extrafascial,1,Robótica
+-1,26,4, Neuro-Preservadora Unilateral,1,Robótica
+-1,26,5, Neuro-Preservadora Bilateral,1,Robótica
+-1,27,0,0 lts,1,"Sangrado Estimado
+Intra-operatorio"
+-1,27,1,1 lts,1,"Sangrado Estimado
+Intra-operatorio"
+-1,27,2,2 lts,1,"Sangrado Estimado
+Intra-operatorio"
+-1,27,3,3 lts,1,"Sangrado Estimado
+Intra-operatorio"
+-1,27,4,4 lts,1,"Sangrado Estimado
+Intra-operatorio"
+-1,27,5,5 lts,1,"Sangrado Estimado
+Intra-operatorio"
+-1,28,0,0,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,1,1,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,2,2,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,3,3,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,4,4,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,5,5,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,6,6,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,7,7,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,8,8,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,9,9,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,28,10,10,1,"Número de Paquetes
+Globulares Transfundidos"
+-1,29,1,SI,1,Complicaciones Transoperatorias
+-1,29,0,NO,1,Complicaciones Transoperatorias
+-1,30,0,0,1,Días de Estancia
+-1,30,1,1,1,Días de Estancia
+-1,30,2,2,1,Días de Estancia
+-1,30,3,3,1,Días de Estancia
+-1,30,4,4,1,Días de Estancia
+-1,30,5,5,1,Días de Estancia
+-1,30,6,6,1,Días de Estancia
+-1,30,7,7,1,Días de Estancia
+-1,30,8,8,1,Días de Estancia
+-1,30,9,9,1,Días de Estancia
+-1,30,10,10,1,Días de Estancia
+-1,30,11,11,1,Días de Estancia
+-1,30,12,12,1,Días de Estancia
+-1,30,13,13,1,Días de Estancia
+-1,30,14,14,1,Días de Estancia
+-1,30,15,15,1,Días de Estancia
+-1,30,16,16,1,Días de Estancia
+-1,30,17,17,1,Días de Estancia
+-1,30,18,18,1,Días de Estancia
+-1,30,19,19,1,Días de Estancia
+-1,30,20,20,1,Días de Estancia
+-1,30,21,21,1,Días de Estancia
+-1,30,22,22,1,Días de Estancia
+-1,30,23,23,1,Días de Estancia
+-1,30,24,24,1,Días de Estancia
+-1,30,25,25,1,Días de Estancia
+-1,30,26,26,1,Días de Estancia
+-1,30,27,27,1,Días de Estancia
+-1,30,28,28,1,Días de Estancia
+-1,30,29,29,1,Días de Estancia
+-1,30,30,30,1,Días de Estancia
+-1,31,0,0,1,Días de Permanencia de la Sonda
+-1,31,1,1,1,Días de Permanencia de la Sonda
+-1,31,2,2,1,Días de Permanencia de la Sonda
+-1,31,3,3,1,Días de Permanencia de la Sonda
+-1,31,4,4,1,Días de Permanencia de la Sonda
+-1,31,5,5,1,Días de Permanencia de la Sonda
+-1,31,6,6,1,Días de Permanencia de la Sonda
+-1,31,7,7,1,Días de Permanencia de la Sonda
+-1,31,8,8,1,Días de Permanencia de la Sonda
+-1,31,9,9,1,Días de Permanencia de la Sonda
+-1,31,10,10,1,Días de Permanencia de la Sonda
+-1,31,11,11,1,Días de Permanencia de la Sonda
+-1,31,12,12,1,Días de Permanencia de la Sonda
+-1,31,13,13,1,Días de Permanencia de la Sonda
+-1,31,14,14,1,Días de Permanencia de la Sonda
+-1,31,15,15,1,Días de Permanencia de la Sonda
+-1,31,16,16,1,Días de Permanencia de la Sonda
+-1,31,17,17,1,Días de Permanencia de la Sonda
+-1,31,18,18,1,Días de Permanencia de la Sonda
+-1,31,19,19,1,Días de Permanencia de la Sonda
+-1,31,20,20,1,Días de Permanencia de la Sonda
+-1,31,21,21,1,Días de Permanencia de la Sonda
+-1,31,22,22,1,Días de Permanencia de la Sonda
+-1,31,23,23,1,Días de Permanencia de la Sonda
+-1,31,24,24,1,Días de Permanencia de la Sonda
+-1,31,25,25,1,Días de Permanencia de la Sonda
+-1,31,26,26,1,Días de Permanencia de la Sonda
+-1,31,27,27,1,Días de Permanencia de la Sonda
+-1,31,28,28,1,Días de Permanencia de la Sonda
+-1,31,29,29,1,Días de Permanencia de la Sonda
+-1,31,30,30,1,Días de Permanencia de la Sonda
+-1,32,1,Estenosis,1,Complicaciones Tardías
+-1,32,2, Incontinencia,1,Complicaciones Tardías
+-1,32,3, Linfocele,1,Complicaciones Tardías
+-1,32,4, Ninguna,1,Complicaciones Tardías
+-1,32,5, otras,1,Complicaciones Tardías
+-1,33,1,SI,1,Continencia (a un año)
+-1,33,0,NO,1,Continencia (a un año)
+-1,34,1,SI,1,Potencia (a un año)
+-1,34,0,NO,1,Potencia (a un año)
+-1,35,1,SI,1,Radioterapia Adyuvante
+-1,35,0,NO,1,Radioterapia Adyuvante
+-1,36,1,SI,1,Progresión Post-Radioterapia
+-1,36,0,NO,1,Progresión Post-Radioterapia
+-1,37,1,SI,1,Bloqueo Hormonal
+-1,37,0,NO,1,Bloqueo Hormonal
+-1,38,1,SI,1,Radioterapia
+-1,38,0,NO,1,Radioterapia
+-1,39,1,SI,1,Progresión Post-Cirugía
+-1,39,0,NO,1,Progresión Post-Cirugía
+-1,40,1,SI,1,Recurrencia bioquímica
+-1,40,0,NO,1,Recurrencia bioquímica
+-1,41,1,SI,1,Radioterapia de rescate
+-1,41,0,NO,1,Radioterapia de rescate

@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Documento sin título</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+	<!--Eestilos-->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="../../resources/css/app/registros.css" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Nuevo Registro</h1>
+	<div id="tabs" class="wtabs">
+		<ul>
+			<li><a href="#tabs-1">Nuevo</a></li>
+			<li><a href="#tabs-2">1 Datos Generales</a></li>
+			<li><a href="#tabs-3">2 Diagnóstico</a></li>
+			<li><a href="#tabs-4">3 Cirugía</a></li>
+			<li><a href="#tabs-5">4 Radioterapia</a></li>
+			<li><a href="#tabs-6">5 Metástasis</a></li>
+			<li><a href="#tabs-7">6 Progresión</a></li>
+			<li><a href="#tabs-7">7 Estatus</a></li>
+		</ul>
+		<div id="tabs-1">
+			<h2>Un registro consta de 7 partes:</h2>
+			<ul>
+				<li>Datos Generales</li>
+				<li>Diagnóstico</li>
+				<li>Cirugía</li>
+				<li>Radio Terapia</li>
+				<li>Tratamiento</li>
+				<li>Progresión</li>
+				<li>Estatus</li>
+			</ul>
+			<br>
+			<ol>
+				<li>Usted puede iniciar con la captura del registro, y si por cualquier motivo no puede concluir, puede usted terminar en otro momento.</li>
+				<li>Por favor sea tan preciso y conciso como le sea posible en sus respuestas.</li>
+				<li>Si tiene dudas, puede mandarnos un mensaje mediante nuestra página de contacto.</li>
+			</ol>
+			<filset>
+				<legend>Por favor ingrese los datos del paciente del paciente:</legend>
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="sApellidoPaterno" class="col-sm-2 control-label">Apellido paterno</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="sApellidoPaterno" placeholder="Apellido paterno" required>
+						</div>
+						<label for="sApellidoMaterno" class="col-sm-2 control-label">Apellido materno</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="sApellidoMaterno" placeholder="Apellido materno" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="sNombres" class="col-sm-2 control-label">Nombres</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="sNombres" placeholder="Nombres" required>
+						</div>
+						<label for="dNacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control" id="dNacimiento" placeholder="Fecha de Nacimiento" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="sRFC" class="col-sm-2 control-label">RFC</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="sRFC" placeholder="RFC" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-10 col-sm-1">
+							<button type="submit" class="btn btn-primary" id="continuaCurp">Continuar</button>
+						</div>
+					</div>
+				</form>
+			</filset>
+		</div>
+		<div id="tabs-2">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-1 control-label">Hospital</label>
+					<div class="col-sm-5">
+						<label  class="form-control">Hospital Genérico de Captura</label>
+					</div>
+					<label class="col-sm-1 control-label">Proveniencia <span class="required-label">*</span></label>
+					<div class="col-sm-2">
+						<input type="radio" name="proveniencia" value="1" required/>Público (Instituto/Hospital)<br />
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="proveniencia" value="2" />Privado<br />
+					</div>
+				</div>
+				<div class="form-group" id="divAnoDiagnostico">
+					<label for="iAnoDiagnostico" class="col-sm-1 control-label">Año de diagnóstico <span class="required-label">*</span></label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iAnoDiagnostico" required>
+							<option value="1" class="form-control">Anterior</option>
+						</select>
+					</div>
+					<label for="sNumeroRegistro" class="col-sm-1 control-label">Número de registro <span class="required-label">*</span></label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="sNumeroRegistro" placeholder="Número de registro" required>
+					</div>
+				</div>
+				<div class="form-group" id="divApellidoPaterno">
+					<label for="sApellidoPaterno" class="col-sm-1 control-label">Apellido Paterno <span class="required-label">*</span></label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="sApellidoPaterno" placeholder="Apellido Paterno" required>
+					</div>
+					<label for="sApellidoMaterno" class="col-sm-1 control-label">Apellido Materno <span class="required-label">*</span></label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="sApellidoMaterno" placeholder="Apellido Materno" required>
+					</div>
+				</div>
+				<div class="form-group" id="divNombres">
+					<label for="sNombres" class="col-sm-1 control-label">Nombre(s) <span class="required-label">*</span></label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="sNombres" placeholder="Nombre(s)" required>
+					</div>
+					<label for="dNacimiento" class="col-sm-1 control-label">Fecha de nacimiento <span class="required-label">*</span></label>
+					<div class="col-sm-5">
+						<input type="date" class="form-control" id="dNacimiento" placeholder="Fecha de nacimiento" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iEscolaridad" class="col-sm-1 control-label">Escolaridad </label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iEscolaridad">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+					<label for="iEscolaridadAnos" class="col-sm-1 control-label">Escolaridad en años</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iEscolaridadAnos">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iOcupacion" class="col-sm-1 control-label">Ocupación</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iOcupacion">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+					<label class="col-sm-offset-6 col-sm-1 control-label">Tabaquismo</label>
+					<div class="col-sm-1">
+						<input type="radio" name="rTabaquismo" value="1"/>No<br />
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="rTabaquismo" value="2" />Si<br />
+					</div>
+				</div>				
+				<div class="form-group">
+					<label for="iAnosTabaquismo" class="col-sm-1 control-label">Años de tabaquismo</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iAnosTabaquismo">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+					<label for="iCigarrosDia" class="col-sm-1 control-label">Cantidad (cigarros al día)</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iCigarrosDia">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Historia Familiar de Cáncer</label>
+					<div class="col-sm-1">
+						<input type="radio" name="iFamiliaCancer" value="1"/>No<br />
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iFamiliaCancer" value="2" />Si<br />
+					</div>
+					<label for="iTipoCancer" class="col-sm-offset-6 col-sm-1 control-label">Tipo de cáncer</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iTipoCancer">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iOtroCancer" class="col-sm-1 control-label">Otros tipos de Cáncer</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iOtroCancer">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+					<label for="iGradoFamiliaCancer" class="col-sm-1 control-label">Grado del familiar con Cáncer</label>
+					<div class="col-sm-5">
+						<select class="form-control" id="iGradoFamiliaCancer">
+							<option value="" class="form-control">Seleccione</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-10 col-sm-2">
+						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
+						<button type="button" class="btn btn-success" id="continuarGeneral">Continuar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="tabs-3">
+			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+		</div>
+		<div id="tabs-4"></div>
+		<div id="tabs-5"></div>
+		<div id="tabs-6"></div>
+		<div id="tabs-7"></div>
+	</div>
+	<!--jquery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+	<!--boostrap-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+	<!--steps-->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!--steps-->
+	<script src="../../resources/script/app/registros.js" type="text/javascript"></script>
+	<script>
+		$(function() {
+			$("#tabs").tabs();
+		});
+	</script>
+</body>
+</html>

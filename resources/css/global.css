@@ -1,0 +1,32 @@
+.required-label {
+	color:firebrick;
+}
+
+fieldset {
+	border:1px solid #999;
+	border-radius:8px;
+	box-shadow:0 0 10px #999;
+	width: 98%;
+	background-color: white;
+}
+legend {
+	background:#fff;
+}
+
+hr {
+	height: 2px;
+	border-top: 1px solid grey;
+}
+.body{
+	background-image: url(../img/laboratorio.jpg);
+	background-size: 100%;
+	background-repeat:no-repeat;
+	overflow: hidden;
+}
+.row-index{margin-top: 10% !important;}
+.fieldset-index{
+	margin: auto; 
+	background-color:#041f3e; 
+	color: white; 
+}
+.form-group a{color:white;}
