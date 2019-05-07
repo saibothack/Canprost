@@ -37,12 +37,10 @@ $_SESSION['rfc']="";
 			<li><a href="#tabs-1">Nuevo</a></li>
 			<li><a href="#tabs-2">1 Datos Generales</a></li>
 			<li><a href="#tabs-3">2 Diagnóstico</a></li>
-			<li><a href="#tabs-4" hidden>3 Cirugía</a></li>
-			<li><a href="#tabs-5" hidden>4 Radioterapia</a></li>
-			<li><a href="#tabs-6">5 Metástasis</a></li>
-			<li><a href="#tabs-7">6 Progresión</a></li>
-			<li><a href="#tabs-8" hidden>7 Ningún tratamiento</a></li>
-			<li><a href="#tabs-9">7 Estatus</a></li>
+			<li><a href="#tabs-4">3 Previo</a></li>
+			<li><a href="#tabs-5">4 Metástasis</a></li>
+			<li><a href="#tabs-6">5 Progresión</a></li>
+			<li><a href="#tabs-7">6 Estatus</a></li>
 		</ul>
 		<!--Inicia seccion nuevo-->
 		<div id="tabs-1">
@@ -126,15 +124,10 @@ $_SESSION['rfc']="";
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Hospital</label>
 					<div class="col-sm-4">
-					
 						<label  class="form-control"><?php print($_SESSION["HOSPITAL"]) ?></label>
 					</div>
 					<label class="col-sm-2 control-label">Proveniencia <span class="required-label">*</span></label>
 					<div id="rg_campo_1" class="col-sm-4">
-					<!--	<input type="radio" name="proveniencia"  value="1" required/>Público (Instituto/Hospital)<br />
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="proveniencia"  value="2" />Privado<br />-->
 					</div>
 				</div>
 
@@ -144,14 +137,11 @@ $_SESSION['rfc']="";
 						<select class="form-control" name="campo_7" id="campo_7" required>
 						</select>
 					</div>
-				
 					<script>
 						function validaFecha(){
 							var d = $("#campo_7").val()
 
-                            console.log(d);
-                            console.log($("#dNacimientoD").val());
-							if(d <= $("#dNacimientoD").getYear()){
+							if(d <= $("#dNacimientoD").val()){
 
 								$("#divAnioDiagnostico").addClass('has-error')
 								$("#campo_7").val('')
@@ -295,33 +285,10 @@ $_SESSION['rfc']="";
 					<label for="campo_11" class="col-sm-2 control-label">Modalidad del diagnóstico</label>
 					<div class="col-sm-4">
 						<select class="form-control" id="campo_11" name="campo_11" required>
-							<!--<option value="" class="form-control">Seleccione</option>
-							<option value="1" class="form-control">Biopsia</option>
-							<option value="2" class="form-control">Clínico APE y/o TR</option>
-							<option value="3" class="form-control">RTUP/Adenomectomía</option>
-							<option value="4" class="form-control">Biopsia en otro sitio</option>
-							<option value="5" class="form-control">Biopsia de saturación</option>
-							<option value="5" class="form-control">Desconocido</option>-->
 						</select>
 					</div>
 					<label class="col-sm-2 control-label">Síntomas <span class="required-label">*</span></label>
 					<div class="col-sm-4" id="rg_campo_12">
-						<!--
-						<input type="radio" name="proveniencia" value="1" required/>Asintomático
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="proveniencia" value="2" />Obstructivo/Irritativo
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="proveniencia" value="1" required/>Dolor Óseo Sangrado
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="proveniencia" value="1" required/>Anemia
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="proveniencia" value="1" required/>Otros
-					-->
-
 					</div>
 
 				</div>
@@ -332,7 +299,6 @@ $_SESSION['rfc']="";
 				<div class="form-group">
 					<div class="col-sm-offset-9 col-sm-3">
 						<div id="btnDiagnostico" hidden><button type="button" class="btn btn-danger" id="regresarGeneral" onclick="verDiagnostico()">Ver Diagnostico</button></div>
-						<!--<button type="button" class="btn btn-primary" onclick="muestraTNM()" >TNM pdf</button>-->
 						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarDiagnostico()" >Continuar</button>
 					</div>
 				</div>
@@ -341,6 +307,7 @@ $_SESSION['rfc']="";
 		<!--termina seccion diagnostico-->
 
 		<!--Empieza seccion cirugia-->
+		<!--Se cambia a tratamiento previo-->
 		<div id="tabs-4">
 			<form class="form-horizontal" id="form_cirugia">
 				<div class="form-group">
@@ -809,179 +776,8 @@ $_SESSION['rfc']="";
 		</div>
 		<!--termina seccion cirugia-->
 
-		<!--Empieza seccion radioterapia-->
-		<div id="tabs-5">
-			<form class="form-horizontal" id="form_radioterapia">
-				<div class="form-group">
-					<label for="iRadBloqueoHormonal" class="col-sm-2 control-label">Bloqueo hormonal</label>
-					<div id="rg_campo_46">
-						<!--
-						<input type="radio" onClick="cargaRadCualBloqueo()" name="iRadBloqueoHormonal" value="1" checked>Si
-					</div>
-					<div class="col-sm-1">
-						<input type="radio" onClick="cargaRadCualBloqueo()" name="iRadBloqueoHormonal" value="2">No
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" onClick="cargaRadCualBloqueo()" name="iRadBloqueoHormonal" value="3">Desconocido
-						-->
-					</div>
-					<div hidden>
-					<label for="sDosis" class="col-sm-2 control-label">Dosis </label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="sDosis" placeholderotepa="Dosis" maxlength="50" required/>
-					</div>
-					</div>
-				</div>
-				<script>
-					function cargaRadCualBloqueo(){
-						if($("input[name=iRadBloqueoHormonal]:checked").val() == 1){
-							$("#divRadCualBloqueo").show()
-						}else{
-							$("#divRadCualBloqueo").hide()
-						}
-					}
-				</script>
-				<div class="form-group" hidden>
-					<label for="iDosisDesconocida" class="col-sm-2 control-label">Dosis desconocida</label>
-
-                    <div class="col-sm-2">
-                        <input value="1 " type="radio" name="iDosisDesconocida" id="iDosisDesconocida" />Si
-                    </div>
-                    <div class="col-sm-2">
-                        <input value="0" type="radio" name="iDosisDesconocida" id="iDosisDesconocida" />No
-                    </div>
-				</div>
-				<div class="form-group">
-					<label for="dFechaDosis" class="col-sm-2 control-label">Fecha de inicio <span class="required-label">*</span></label>
-					<div class="col-sm-4">
-						<input type="date" class="form-control" name="dFechaDosis" id="dFechaDosis" placeholder="Fecha de inicio" >
-					</div>
-					<label for="dFechaTerminoDosis" class="col-sm-2 control-label">Fecha de termino <span class="required-label">*</span></label>
-					<div class="col-sm-4">
-						<input type="date" class="form-control" name="dFechaTerminoDosis" id="dFechaTerminoDosis" placeholder="Fecha de termino" >
-					</div>
-				</div>
-				<div class="form-group">
-					<div id="divRadCualBloqueo" hidden>
-						<label for="iCualBloqueo" class="col-sm-2 control-label">Cual</label>
-						<div id="rg_campo_47">
-							<!--
-							<label><input name="iCualBloqueo" type="checkbox" value="1">Medico</label>
-							<label><input name="iCualBloqueo" type="checkbox" value="2">
-							Quirurgico</label>
-							<label><input name="iCualBloqueo" type="checkbox" value="3"> Monoterapia</label>
-							<label><input name="iCualBloqueo" type="checkbox" value="4"> Bloqueo total</label>
-							<label><input name="iCualBloqueo" type="checkbox" value="5"> Desconocido</label>
-							-->
-						</div>
-					</div>
-				</div>
-				<hr>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Resultados Post-Radioterapia</label>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">APE nadir Post-RT (considerando 6 meses, posterior al Tx)</label>
-					<div class="col-sm-4">
-						<input type="number" class="form-control" name="iApeNadir">
-					</div>
-					<label for="iComplicacionesTardias" class="col-sm-2 control-label">Complicaciones tardías (dentro de 6 meses)</label>
-					<div class="col-sm-4">
-						<select class="form-control" id="campo_48" name="campo_48">
-						<!--<select class="form-control" id="iComplicacionesTardias" onChange="cargEspeCompl()">
-							<option value="" class="form-control">Seleccione</option>
-							<option value="1" class="form-control">Hematuria</option>
-							<option value="2" class="form-control">Incontinencia</option>
-							<option value="3" class="form-control">Estenosis</option>
-							<option value="4" class="form-control">Rectoragia</option>
-							<option value="5" class="form-control">Desconocido</option>
-							<option value="6" class="form-control">Otro</option>-->
-						</select>
-					</div>
-				</div>
-				<script>
-					function cargEspeCompl(){
-						if($("#iComplicacionesTardias") == 6){
-					   		$("#divEspecificarComplicaciones").show()
-				   		}else{
-							$("#divEspecificarComplicaciones").hide()
-						}
-					}
-				</script>
-				<div class="form-group">
-					<label for="iRadTipologia" class="col-sm-2 control-label">Tipo de recurrencia</label>
-					<div class="col-sm-4">
-						<select class="form-control" id="campo_51" name="campo_51">
-							<!--<option value="" class="form-control">Seleccione</option>
-							<option value="1" class="form-control">Por marcador (APE)</option>
-							<option value="2" class="form-control">Por imagen</option>-->
-						</select>
-					</div>
-					<label for="iNumeroConsultas" class="col-sm-2 control-label">Número total de consultas</label>
-					<div class="col-sm-4">
-						<input type="number" class="form-control" name="iNumeroConsultas">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="divEspecificarComplicaciones" hidden>
-						<label for="sEspecificarComplicaciones" class="col-sm-2 control-label">Especificar otro</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" name="sEspecificarComplicaciones" id="sEspecificarComplicaciones" placeholder="Especificar otro" >
-						</div>
-					</div>
-					<label for="iRecurrenciaBioq" class="col-sm-2 control-label">Recurrencia bioquímica</label>
-					<div id="rg_campo_49">
-					<!--<div class="col-sm-1">
-						<input type="radio" name="iRecurrenciaBioq" value="1">Si
-					</div>
-					<div class="col-sm-1">
-						<input type="radio" name="iRecurrenciaBioq" value="2">No
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="iRecurrenciaBioq" value="3">Desconocido
-						-->
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="sApeRec" class="col-sm-2 control-label">APE de recurrencia</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="sApeRec">
-					</div>
-					<label for="dFechaRec" class="col-sm-2 control-label">Fecha de recurrencia <span class="required-label">*</span></label>
-					<div class="col-sm-4">
-						<input type="date" class="form-control" name="dFechaRec" id="dFechaRec" placeholder="Fecha de recurrencia" >
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="iProgPostRadio" class="col-sm-2 control-label">Progresión Post-Radioterapia</label>
-					<div id="rg_campo_50">
-						<!--
-						<input type="radio" name="iProgPostRadio" value="1">Si
-					</div>
-					<div class="col-sm-1">
-						<input type="radio" name="iProgPostRadio" value="2">No
-					</div>
-					<div class="col-sm-2">
-						<input type="radio" name="iProgPostRadio" value="3">Desconocido
-						-->
-					</div>
-					<label for="dFechaInicioProg" class="col-sm-2 control-label">Fecha de inicio de progresión Post-Radioterapia <span class="required-label">*</span></label>
-					<div class="col-sm-4">
-						<input type="date" class="form-control" name="dFechaInicioProg" id="dFechaInicioProg" placeholder="Fecha de inicio de progresión" >
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-9 col-sm-3">
-						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
-						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarRadioterapia()">Continuar</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<!--termina seccion radioterapia-->
-
 		<!--Empieza seccion metastasis-->
-		<div id="tabs-6">
+		<div id="tabs-5">
 
 			<form class="form-horizontal" id="form_metastasis">
                 <div class="form-group">
@@ -1201,7 +997,7 @@ $_SESSION['rfc']="";
 		<!--termina seccion metastasis-->
 
 		<!--Empieza seccion progresion-->
-		<div id="tabs-7">
+		<div id="tabs-6">
 			<form class="form-horizontal" id="form_progresion">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Resistencia a la Castración</label>
@@ -1343,31 +1139,8 @@ $_SESSION['rfc']="";
 		</div>
 		<!--termina seccion progresion-->
 
-		<!--Inicia modulo de ningun tratamiento-->
-		<div id="tabs-8" hidden>
-			<form class="form-horizontal" id="form_sintratamiento">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Nivel de APE <span class="required-label">*</span></label>
-					<div class="col-sm-4">
-						<input type="numer" class="form-control" name="dNivelAPE" id="dNivelAPE" placeholder="Nivel de APE" required>
-					</div>
-					<label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
-					<div class="col-sm-4">
-						<input type="text" name="dNivelSintratamiento" class="form-control">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-9 col-sm-3">
-						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
-						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarSinTratamiento()" >Continuar</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<!--termina modulo de ningun tratamiento-->
-
 		<!--Inicia modulo de estatus-->
-		<div id="tabs-9">
+		<div id="tabs-7">
 			<form class="form-horizontal" id="form_estatus">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Fecha de la última consulta <span class="required-label">*</span></label>

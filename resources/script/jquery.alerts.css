@@ -36,11 +36,23 @@
 }
 
 #popup_content.confirm {
-	background-image: url(../../images/important.gif);
+	background-image: url(../../images/help.gif);
 }
 
 #popup_content.prompt {
 	background-image: url(../../images/help.gif);
+}
+
+#popup_content.message {
+	background-image: url(../../images/message-icon.png);
+}
+
+#popup_content.warning {
+	background-image: url(../../images/warning-icon.png);
+}
+
+#popup_content.error {
+	background-image: url(../../images/error-icon.png);
 }
 
 #popup_message {

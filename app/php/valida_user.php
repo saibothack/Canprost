@@ -8,7 +8,6 @@ require_once('opendb.php');
 //$sql = "SELECT ID_USUARIO, CONCAT(CUUSUARIO, ' ', CUAPELLIDOS) AS NOMBRE FROM cantprosdb.C_USUARIOS WHERE CUEMAIL = '$_POST[usuario]' AND CUPASS = '$_POST[pass]' AND CUUSUARIO_AUTORIZADO = 1;";
 $sql = "SELECT ID_USUARIO, TIPO, CONCAT(CUUSUARIO, ' ', CUAPELLIDOS) AS NOMBRE, hospital FROM cantprosdb.C_USUARIOS inner join cantprosdb.C_HOSPITALES ON C_USUARIOS.CUHOSPITAL = C_HOSPITALES.ID_HOSPITAL WHERE CUEMAIL = '$_POST[usuario]' AND CUPASS = '$_POST[pass]' AND CUUSUARIO_AUTORIZADO = 1;";
 
-
 $registros = mysqli_query($conexion,$sql);
 $error = mysqli_error($conexion);
 
@@ -34,9 +33,9 @@ if ($error <> "") {
 		//echo "<script type='text/javascript'>window.location.href = '../../home.php';</script>";
 	} else {
 		//echo 'index';
-		echo 'index';
+		$_SESSION["ERROR"] = false;
 
-		header('Location: ../../index.html'); 
+		header('Location: ../../index.php'); 
 		//echo "<script type='text/javascript'>window.location.href = '../../index.html';</script>";
 	}
 }
