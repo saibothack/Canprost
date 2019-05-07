@@ -1,6 +1,6 @@
 <?php
-header("Content-Type: application/json");	
-	
+header("Content-Type: application/json");
+
 include '../../../config.php';
 include '../opendb.php';
 include '../funciones.php';
@@ -15,9 +15,9 @@ print($error);
 
 $rows = array();
 while($row = mysqli_fetch_assoc($registros)) {
-	$rows[] = $row;
+    $rows[] = $row;
 }
 
 echo json_encode($rows);
-	
+
 ?>

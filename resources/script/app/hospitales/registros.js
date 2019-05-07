@@ -7,38 +7,39 @@
 	
 	function consultaRegistros(id) {
 		parent.resize();
-		parent.parent.setLoading();
-		
-		var params = {
-			idRegistro: id
-		};
+		if (id != 0) {
+			parent.parent.setLoading();
 
-		$.ajax({
-			type: "POST",
-			url: "../php/hospitales/consultaRegistro.php",
-			data: params,
-			success: function(data) {
-				try {
-					$('#sNombreHospital').val(decodeEntities(data[0].sHospital));
-					$('input[name=rSector][value='+ data[0].iSector + ']').prop('checked', true);
-					$('#iNivelHospitalario').val(data[0].iNivel);
-					$('#sCalle').val(decodeEntities(data[0].sDireccion));
-					$('#sColonia').val(decodeEntities(data[0].sColonia));
-					$('#sCiudad').val(decodeEntities(data[0].sCiudad));
-					$('#sEstado').val(decodeEntities(data[0].sEstado));
-					$('#sCp').val(decodeEntities(data[0].sCp));
-					$('#sTelefono').val(decodeEntities(data[0].sTelefono));
-					$('input[name=rTipoTel][value=' + data[0].iTipoTel + ']').prop('checked', true);
-					$('#sEmail').val(decodeEntities(data[0].sEmail));
-					$('#sObservaciones').val(decodeEntities(data[0].sObservaciones));
-				} catch(e) {
-					window.alert(e.message);
+			var params = {
+				idRegistro: id
+			};
+
+			$.ajax({
+				type: "POST",
+				url: "../php/hospitales/consultaRegistro.php",
+				data: params,
+				success: function (data) {
+					try {
+						$('#sNombreHospital').val(decodeEntities(data[0].sHospital));
+						$('input[name=rSector][value=' + data[0].iSector + ']').prop('checked', true);
+						$('#iNivelHospitalario').val(data[0].iNivel);
+						$('#sCalle').val(decodeEntities(data[0].sDireccion));
+						$('#sColonia').val(decodeEntities(data[0].sColonia));
+						$('#sCiudad').val(decodeEntities(data[0].sCiudad));
+						$('#sEstado').val(decodeEntities(data[0].sEstado));
+						$('#sCp').val(decodeEntities(data[0].sCp));
+						$('#sTelefono').val(decodeEntities(data[0].sTelefono));
+						$('input[name=rTipoTel][value=' + data[0].iTipoTel + ']').prop('checked', true);
+						$('#sEmail').val(decodeEntities(data[0].sEmail));
+						$('#sObservaciones').val(decodeEntities(data[0].sObservaciones));
+					} catch (e) {
+						window.alert(e.message);
+					}
+
+					parent.parent.endLoading();
 				}
-				
-				parent.parent.endLoading();
-			}
-		});	
-		
+			});
+		}
 	}
 	
 	function clean() {

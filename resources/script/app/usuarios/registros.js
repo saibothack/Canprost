@@ -315,6 +315,8 @@
 					}else{
 						if($('#ind').val() == 2){
 							window.parent.location ="../../index.html";
+						} else {
+							window.alert("Se modifico su usuario");
 						}
 					}
 					parent.endLoading();

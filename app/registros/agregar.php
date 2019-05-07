@@ -37,8 +37,8 @@ $_SESSION['rfc']="";
 			<li><a href="#tabs-1">Nuevo</a></li>
 			<li><a href="#tabs-2">1 Datos Generales</a></li>
 			<li><a href="#tabs-3">2 Diagnóstico</a></li>
-			<li><a href="#tabs-4">3 Cirugía</a></li>
-			<li><a href="#tabs-5">4 Radioterapia</a></li>
+			<li><a href="#tabs-4" hidden>3 Cirugía</a></li>
+			<li><a href="#tabs-5" hidden>4 Radioterapia</a></li>
 			<li><a href="#tabs-6">5 Metástasis</a></li>
 			<li><a href="#tabs-7">6 Progresión</a></li>
 			<li><a href="#tabs-8" hidden>7 Ningún tratamiento</a></li>
@@ -50,8 +50,8 @@ $_SESSION['rfc']="";
 			<ul>
 				<li>Datos Generales</li>
 				<li>Diagnóstico</li>
-				<li>Cirugía</li>
-				<li>Radio Terapia</li>
+				<!--<li>Cirugía</li>
+				<li>Radio Terapia</li>-->
 				<li>Metástasis</li>
 				<li>Progresión</li>
 				<!--<li>Ningún tratamiento</li>-->
@@ -148,7 +148,11 @@ $_SESSION['rfc']="";
 					<script>
 						function validaFecha(){
 							var d = $("#campo_7").val()
-							if(d <= $("#dNacimientoD").val()){
+
+                            console.log(d);
+                            console.log($("#dNacimientoD").val());
+							if(d <= $("#dNacimientoD").getYear()){
+
 								$("#divAnioDiagnostico").addClass('has-error')
 								$("#campo_7").val('')
 								$("#campo_7").focus()

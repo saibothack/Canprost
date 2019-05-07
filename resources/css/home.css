@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+html, body {
+	height: 100%;
+	width: 99.985%;
+	font-family: 'Numans', sans-serif;
+}
+
+header {
+	background-color: white;
+}
+
+.background-blue {
+	background-color: darkblue;
+}
+
+h5 {
+	font-weight: bold;
+}
+
+h6 {
+	font-weight: bold;
+}
+
+.container-fluid {
+	height: 99.985% !important;
+}
+
+.table-menu {
+	height: 50px;
+	width: 100%;
+	font-weight: bold;
+	font-size: 20px;
+	border:#FFFFFF 2px solid;
+}
+
+.table-menu tr td {
+	border:#FFFFFF 2px solid;
+	width: 16.6%;
+}
+
+.table-menu tr td:nth-child(1) {
+	background-color:  #1e8449;
+	color: white;
+}
+
+.table-menu tr td:nth-child(2) {
+	background-color:  #229954;
+	color: white;
+}
+
+.table-menu tr td:nth-child(3) {
+	background-color:  #52be80;	
+}
+
+.table-menu tr td:nth-child(4) {
+	background-color:   #abebc6;	
+}
+
+.table-menu tr td:nth-child(5) {
+	background-color:  #e9f7ef;	
+}
+
+.bg-light {
+	background-color: transparent !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+	color: #ffffff;
+}
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+	color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: #ffffff;
+}
+
+iframe {
+	width: 100% !important;
+	min-height: 650px !important;
+}
+
+
+

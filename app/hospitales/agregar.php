@@ -12,11 +12,13 @@
 </head>
 <body>
 	<?php
-		if ($_REQUEST[ediId] <> "") {
-			echo "<h1>Edita Hospital</h1>";
-		} else{
-			echo "<h1>Alta de Hospital</h1>";
-		}
+        if (isset($_REQUEST['ediId'])) {
+            if ($_REQUEST['ediId'] <> "") {
+                echo "<h1>Edita Hospital</h1>";
+            } else {
+                echo "<h1>Alta de Hospital</h1>";
+            }
+        }
 	?>
 	
 	<p>Hola buenos dias!  por favor complete los siguientes campos, los datos marcados con <span class="required-label">*</span> son obligatorios:</p>
@@ -113,25 +115,24 @@
 			<div class="form-group">
 				<label for="sObservaciones" class="col-sm-2 control-label">Observaciones</label>
 				<div class="col-sm-10">
-					<textarea rows="4" class="form-control" id="sObservaciones">
-					</textarea>
+					<textarea rows="4" class="form-control" id="sObservaciones"></textarea>
 				</div>
 			</div>
 			<?php
-				if ($_REQUEST[ediId] == "") {
-					echo '<div class="form-group">
+                if (!isset($_REQUEST['ediId'])) {
+                    echo '<div class="form-group">
 							<div class="col-md-offset-5 col-sm-3">
 								<button type="button" class="btn btn-primary" id="btnRegistrar">Registrar</button>
 							</div>
 						</div>';
-				} else{
-					echo '<div class="form-group">
+                } else {
+                    echo '<div class="form-group">
 							<div class="col-sm-5">&nbsp;</div>
 							<div class="col-sm-1">
 								<button type="button" class="btn btn-primary" id="btnEdita">Editar</button>
 							</div>
 						</div>';
-				}
+                }
 			?>
 		</form>
 		
@@ -141,7 +142,7 @@
 		<div id="dialog" title="Error">
 		  <p>Ocurrio un error</p>
 		</div>
-		<input type="hidden" id="idValue" value="<?php echo $_REQUEST[ediId]?>">
+		<input type="hidden" id="idValue" value="<?php if (isset($_REQUEST['ediId'])) { echo $_REQUEST['ediId']; }?>">
 	</fieldset>
 	<!--jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>

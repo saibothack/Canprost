@@ -76,8 +76,15 @@ oCat_Registro["REALIZADO_PET"]=73;
 oCat_Registro["REALIZADO_GGO"]=74;
 oCat_Registro["REALIZADO_TR"]=75;
 
+var fechaNacimiento;
+
 var sUrl="../../";
 var global_catalog_data=null;
+
+function cargaSeccion1() {
+	$("#tabs").tabs("enable",0);
+	$("#tabs").tabs({ active:  0});
+}
 
 function cargaRegistroSeleccionado(idRegistro,dato){
 	var pag =["json_registros","json_registros_biopsia","json_registros_ape","json_registros_rtup","json_registros_otro","json_registros_saturacion","json_registros_desc"]
@@ -314,13 +321,11 @@ function validaMultiSelect(campo){
                         mostrarOcultarSeccion("divCualBloqueo",false);
                 }
                     break;
-
-
-
-
-
-
-
+				case oCat_Registro["CAT_ANIO_DE_DIAGNOSTICO"]:
+				{
+					validaFecha();
+				}
+					break;
 			}
 		}
 	}
@@ -442,7 +447,7 @@ function calculaRFC() {
 	nombre = $("#sNombres").val().toUpperCase();
 	apellidoPaterno = $("#sApellidoPaterno").val().toUpperCase();
 	apellidoMaterno = $("#sApellidoMaterno").val().toUpperCase();
-	fecha = $("#dNacimiento").val();
+	fechaNacimiento = $("#dNacimiento").val();
 
 	var rfc = "";
 	apellidoPaterno = quitaArticulos(apellidoPaterno);
@@ -459,9 +464,9 @@ function calculaRFC() {
 	}
 	rfc += apellidoMaterno.substr(0, 1);
 	rfc += nombre.substr(0, 1);
-	rfc += fecha.substr(2, 2);
-	rfc += fecha.substr(5, 2);
-	rfc += fecha.substr(8,10);
+	rfc += fechaNacimiento.substr(2, 2);
+	rfc += fechaNacimiento.substr(5, 2);
+	rfc += fechaNacimiento.substr(8,10);
 	// rfc += "-" + homclave;
 	$("#sRFC").val(rfc);
 }

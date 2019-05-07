@@ -1,6 +1,6 @@
 <?php
 
-	$dbhost = "127.0.0.1";
+	$dbhost = "localhost";
 	$dbuser = 'syswareo_usrWeb';
 	$dbpass = 'Sysware2016';
 	$dbname = 'cantprosdb';

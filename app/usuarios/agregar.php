@@ -2,7 +2,10 @@
 session_start(); 
 include '../../config.php';
 include '../php/opendb.php';
-if($_REQUEST['ind'] == 1) {
+
+$ind = 0;
+
+if(isset($_REQUEST['ind']) && $_REQUEST['ind'] == 1) {
 	$ind = $_REQUEST['ind'];
 	
 
@@ -34,8 +37,11 @@ if($_REQUEST['ind'] == 1) {
 		$hospital= $row["CUHOSPITAL"];
 		$puesto= $row["CUPUESTO"];
 	}
-}else{
-	$ind = $_REQUEST['ind'];
+} else {
+    if (isset($_REQUEST['ind'])) {
+        $ind = $_REQUEST['ind'];
+    }
+
 }
 ?>
 <!doctype html>
@@ -60,8 +66,8 @@ if($_REQUEST['ind'] == 1) {
 				<div id="divNombreUsuario">
 					<label for="sNombreUsuarios" class="col-sm-2 control-label">Nombre(s) &nbsp;<span class="required-label"|>*</span></label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="sNombreUsuarios" placeholder="Nombre" value="<?php echo($nombre); ?>" required>
-						<input type="hidden" id="ind" value="<?php echo($ind); ?>">
+						<input type="text" class="form-control" id="sNombreUsuarios" placeholder="Nombre" value="<?php if (isset($nombre)) { echo($nombre); } ?>" required>
+						<input type="hidden" id="ind" value="<?php if ($ind) { echo($ind); }?>">
 					</div>
 				</div>
 			</div>
@@ -69,7 +75,7 @@ if($_REQUEST['ind'] == 1) {
 				<div id="divApellidos">
 					<label for="sApellidosUsuarios" class="col-sm-2 control-label">Apellidos &nbsp;<span class="required-label">*</span></label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="sApellidosUsuarios" placeholder="Apellidos" value="<?php echo($apellidos); ?>" required>
+						<input type="text" class="form-control" id="sApellidosUsuarios" placeholder="Apellidos" value="<?php if (isset($apellidos)) { echo($apellidos); } ?>" required>
 					</div>
 				</div>
 				<div id="divGenero">
@@ -101,13 +107,13 @@ if($_REQUEST['ind'] == 1) {
 				<div id="divEmail">
 					<label for="sEmail" class="col-sm-2 control-label">E-mail&nbsp;<span class="required-label">*</span></label>
 					<div class="col-sm-4">
-						<input type="email" onBlur="validar_email('sEmail')" class="form-control" id="sEmail" placeholder="Email" value="<?php echo($email); ?>" required>
+						<input type="email" onBlur="validar_email('sEmail')" class="form-control" id="sEmail" placeholder="Email" value="<?php if(isset($email)) { echo($email); } ?>" required>
 					</div>
 				</div>
 				<div id="divTelefono">
 					<label for="sTelefono" class="col-sm-2 control-label">Telefono&nbsp;<span class="required-label">*</span></label>
 					<div class="col-sm-4">
-						<input type="tel" onKeyPress="return solonumeros(event)" maxlength="10" class="form-control" id="sTelefono" value="<?php echo($telefono); ?>" placeholder="Telefono" required>
+						<input type="tel" onKeyPress="return solonumeros(event)" maxlength="10" class="form-control" id="sTelefono" value="<?php if(isset($telefono)) { echo($telefono); } ?>" placeholder="Telefono" required>
 					</div>
 				</div>
 			</div>
@@ -131,7 +137,7 @@ if($_REQUEST['ind'] == 1) {
 				<div id="divRespuesta">
 					<label for="sRespuesta" class="col-sm-2 control-label">Respuesta secreta&nbsp;<span class="required-label">*</span></label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="sRespuesta" value="<?php echo($respuesta); ?>" placeholder="Respuesta secreta" required>
+						<input type="text" class="form-control" id="sRespuesta" value="<?php if(isset($respuesta)) { echo($respuesta); } ?>" placeholder="Respuesta secreta" required>
 					</div>
 				</div>
 			</div>
@@ -155,7 +161,7 @@ if($_REQUEST['ind'] == 1) {
 				<div id="divPuesto">
 					<label for="sPuesto" class="col-sm-2 control-label">Puesto de trabajo&nbsp;<span class="required-label">*</span></label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="sPuesto" value="<?php echo($puesto); ?>" placeholder="Puesto laboral" required>
+						<input type="text" class="form-control" id="sPuesto" value="<?php if(isset($puesto)) { echo($puesto); } ?>" placeholder="Puesto laboral" required>
 					</div>
 				</div>
 			</div>
@@ -186,7 +192,7 @@ if($_REQUEST['ind'] == 1) {
 	<script src="../../resources/script/sysware.js" type="text/javascript"></script>
 	<script src="../../resources/script/app/usuarios/registros.js" type="text/javascript"></script>
 	<script>
-		<?php if ($genero != "") { ?>
+		<?php if (isset($genero) && ($genero != "")) { ?>
 		jQuery("#iGenero option[value=<?php echo($genero); ?>]").attr("selected", true);		
 		jQuery("#sPregunta option[value=<?php echo($pregunta); ?>]").attr("selected", true);
 		jQuery("#sHospital option[value=<?php echo($hospital); ?>]").attr("selected", true);

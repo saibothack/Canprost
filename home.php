@@ -1,217 +1,172 @@
-<?php session_start(); 
-if ($_SESSION['ID_USUARIO'] == "" and $_REQUEST["ind"] == "") {
-	header('Location: index.html'); 
-}
+<?php session_start();
+    if ($_SESSION['ID_USUARIO'] == "" and $_REQUEST["ind"] == "") {
+        header('Location: index.html');
+    }
 ?>
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Canprost</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link rel="icon" type="image/x-icon" href="/resources/img/favicon.ico" />
-	<!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-	<!--Eestilos-->
-	<link href="resources/css/menu.css" rel="stylesheet"> 
-	<link href="resources/css/fontawesome.css" rel="stylesheet"> 
-	<link href="resources/css/styles.css" rel="stylesheet"> 
+<meta charset="UTF-8">
+    <title>.:: CANPROST ::.</title>
+    <link rel="icon" type="image/vnd.microsoft.icon" href="resources/img/favicon.ico">
 </head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="resources/css/home.css" rel="stylesheet" >
 <body>
-	<aside class="container">
-		<div class="row hCont">
-			<div id="wrapper">
-			<!-- Sidebar -->
-				<div id="sidebar-wrapper">
-					<ul class="sidebar-nav" style="margin-left:0;">
-						<li style="background-color: white; width: 250px;">
-							<img src="resources/img/logo-incan.png" alt="logo">
-						</li>
-						<?php
-						if ($_SESSION['ID_USUARIO'] > "") {
-						?>
-						<li class="sidebar-brand">
-							<a href="#menu-toggle"  id="menu-toggle" style="margin-top:20px;float:right;" > 
-								<i class="fa fa-bars " style="font-size:20px !Important;" aria-hidden="true"></i> 
-							</a>
-						</li>
-						<li>
-							<span style="margin-left:10px; text-align: center; color: white; font-size: 14px;">
-								Bienvenido  <br> 
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								&nbsp; <?php echo $_SESSION['NOMBRE'] ?>
-							</span> 
-						</li>
-						<li>
-							<a href="#">
-								<i class="glyphicon glyphicon-home" aria-hidden="true"></i> 
-								<span style="margin-left:10px;">Inicio</span>  
-							</a>
-						</li>
-						<li>
-							<a href="#" data-toggle="collapse" data-target="#lregistros">
-								<i class="glyphicon glyphicon-list" aria-hidden="true"></i> 
-								<span style="margin-left:10px;">Registros <b class="caret"></b></span>  
-							</a>
-						</li>
-						<ul class="sub-menu collapse" id="lregistros">
-							<li>
-								<a href="#" id="NuevoRegistro">
-									<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Nuevo</span>   
-								</a>
-							</li>
-							<li>
-								<a href="#" id="catRegistros">
-									<i class="glyphicon glyphicon-list" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Registros</span>
-								</a>
-							</li>
-							<!--<li>
-								<a href="#">
-									<i class="glyphicon glyphicon-cloud-download" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Excel</span>   
-								</a>
-							</li>-->
-						</ul>
-						<?php if ($_SESSION["TIPO"] == 1) { ?>
-						<li>
-							<a href="#" data-toggle="collapse" data-target="#lHospitales">
-								<i class="glyphicon glyphicon-header" aria-hidden="true"></i> 
-								<span style="margin-left:10px;">Hospitales <b class="caret"></b></span>  
-							</a>
-						</li>
-						<ul class="sub-menu collapse" id="lHospitales">
-							<li>
-								<a href="#" id="aAgregarHospital">
-									<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Nuevo</span>   
-								</a>
-							</li>
-							<li>
-								<a href="#" id="aRegistrosHospital">
-									<i class="glyphicon glyphicon-list" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Registros</span>
-								</a>
-							</li>
-							<!--<li>
-								<a href="#">
-									<i class="glyphicon glyphicon-cloud-download" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Excel</span>   
-								</a>
-							</li>-->
-						</ul>
-						<li>
-							<a href="#" data-toggle="collapse" data-target="#lUsuarios">
-								<i class="glyphicon glyphicon-user" aria-hidden="true"></i> 
-								<span style="margin-left:10px;">Usuarios <b class="caret"></b></span>  
-							</a>
-						</li>
-						<ul class="sub-menu collapse" id="lUsuarios">
-							<li>
-								<a href="#" id="aAgregarUsuario">
-									<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Nuevo</span>   
-								</a>
-							</li>
-							<li>
-								<a href="#" id="userAutorizados">
-									<i class="glyphicon glyphicon-ok" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Autorizados</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" id="userNoAutorizados">
-									<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
-									<span style="margin-left:10px;">No autorizados</span>
-								</a>
-							</li>
-							<!--<li>
-								<a href="#">
-									<i class="glyphicon glyphicon-cloud-download" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Excel</span>   
-								</a>
-							</li>-->
-						</ul>
-						<?php } ?>
-						<li>
-							<a href="#" data-toggle="collapse" data-target="#lPerfil">
-								<i class="glyphicon glyphicon-cog" aria-hidden="true"></i> 
-								<span style="margin-left:10px;">Perfil <b class="caret"></b></span>  
-							</a>
-						</li>
-						<ul class="sub-menu collapse" id="lPerfil">
-							<li>
-								<a href="#" id="aPerfil">
-									<i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Perfil</span>   
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="glyphicon glyphicon-comment" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Mensajes</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i>
-									<span style="margin-left:10px;">Soporte</span>   
-								</a>
-							</li>
-						</ul>
-						<li>
-							<a  href="#" id="cerrarSesion">
-								<i class="glyphicon glyphicon-off" aria-hidden="true"> </i> 
-								<span style="margin-left:10px;">Cerrar</span>  
-							</a>
-						</li>
-						<?php } else { ?>
-						<li>
-							<a href="#" data-toggle="collapse" data-target="#lPerfil">
-								<i class="glyphicon glyphicon-cog" aria-hidden="true"></i> 
-								<span style="margin-left:10px;">Iniciar sesión <b class="caret"></b></span>  
-							</a>
-						</li>
-						<?php } ?>
-					</ul>
-				</div>
-			<!-- /#sidebar-wrapper -->
-				<div id="page-content-wrapper">
-					<div class="container-fluid" id="divFluid">
-						<div class="row hCont">
-							<div class="col-lg-12 hCont">
-								<div class="loading" id="dLoading">
-									<img src="resources/img/loading.gif" alt="loading">
-								</div>
-								<iframe src="principal.html" id="ftmGlobal" style="padding-left: 20px;">
-								</iframe>
-							</div>
-						</div>
-					</div>
-				</div>
-			<!-- /#wrapper -->
-			</div>
-		</div>
-	</aside>
-	<!--jquery-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-	<!--boostrap-->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-	<!--boostrap-->
-	<script src="resources/script/global.js" type="text/javascript"></script>
-	<script src="resources/script/menu.js" type="text/javascript"></script>
-	<script>
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-    </script>
-    <?php if ($_SESSION['ID_USUARIO'] == "" and $_REQUEST["ind"] > "") { ?>
-	<script>
-		setTimeout(function(){$("#ftmGlobal").attr("src","/app/usuarios/agregar.php?ind=2");}, 100);
-	</script>
-	<?php }	?>
+<div class="container-fluid">
+    <header>
+        <div class="row">
+            <div class="col-md-2 text-center"> <img src="resources/img/logo-incan.png" alt="Logo INCAN" style="margin: 20px;"> </div>
+            <div class="col-md-10 text-white background-blue">
+                <h5 style="margin: 10px;">Canprost</h5>
+                <h6 style="margin: 10px;">Registro Nacional de Cáncer de Próstata</h6>
+            </div>
+        </div>
+      </header>
+    <?php
+    if ($_SESSION['ID_USUARIO'] > "") {
+    ?>
+    <table class="text-center table-menu">
+        <tr>
+            <td>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto" style="width: 100% !important;">
+                            <li class="nav-item active" style="width: 100% !important;">
+                                <a class="nav-link" href="principal.html" target="frmGlobal" style="width: 100% !important;">
+                                    <i class="fas fa-home"></i> INICIO
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+            <td>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto" style="width: 100% !important;">
+                            <li class="nav-item dropdown" style="width: 100% !important;">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100% !important;">
+                                    <i class="fas fa-database"></i> REGISTROS
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 100% !important;">
+                                    <a class="dropdown-item" href="app/registros/agregar.php" target="frmGlobal"> <i class="fas fa-plus"></i> Nuevo</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="app/registros/consultar.php" target="frmGlobal"> <i class="fas fa-folder-open"></i> Registros</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+            <?php if ($_SESSION["TIPO"] == 1) { ?>
+            <td>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto" style="width: 100% !important;">
+                            <li class="nav-item dropdown" style="width: 100% !important;">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100% !important;">
+                                    <i class="far fa-hospital"></i> HOSPITALES
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 100% !important;">
+                                    <a class="dropdown-item" href="app/hospitales/agregar.php" target="frmGlobal"> <i class="fas fa-plus"></i> Nuevo</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="app/hospitales/consultar.php" target="frmGlobal"> <i class="fas fa-folder-open"></i> Registros</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+            <td>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto" style="width: 100% !important;">
+                            <li class="nav-item dropdown" style="width: 100% !important;">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100% !important; color: black">
+                                    <i class="fas fa-user-md"></i> COLEGAS
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 100% !important;">
+                                    <a class="dropdown-item" href="app/usuarios/agregar.php" target="frmGlobal"> <i class="fas fa-plus"></i> Nuevo</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="app/usuarios/consultarAut.php" target="frmGlobal"> <i class="fas fa-users"></i> Autorizado</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="app/usuarios/consultarNoAuto.php" target="frmGlobal"> <i class="fas fa-exclamation-triangle"></i> No Autorizado</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+            <?php } ?>
+            <td>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto" style="width: 100% !important;">
+                            <li class="nav-item active" style="width: 100% !important;">
+                                <a class="nav-link" style="width: 100% !important; color: black" href="app/usuarios/agregar.php?ind=1" target="frmGlobal">
+                                    <i class="fas fa-user-cog"></i> PERFIL
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+            <td>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto" style="width: 100% !important;">
+                            <li class="nav-item active" style="width: 100% !important;">
+                                <a class="nav-link" href="app/php/cerrar_sesion.php" style="width: 100% !important; color: black">
+                                    <i class="fas fa-power-off"></i> SALIR
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </td>
+        </tr>
+    </table>
+    <iframe src="principal.html" frameborder="0" id="frmGlobal" name="frmGlobal">
+    </iframe>
+    <?php } ?>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function setLoading() {
+        "use strict";
+        $("#dLoading").show();
+    }
+
+    function endLoading () {
+        "use strict";
+        $("#dLoading").hide();
+    }
+
+    var defaulHeight = (window.innerHeight - 155);
+    console.log(defaulHeight);
+
+    var frm = document.getElementById("frmGlobal");
+    frm.height = defaulHeight + "px";
+
+    function resize() {
+        "use strict";
+
+        var frm = document.getElementById("frmGlobal");
+        var h = frm.contentWindow.document.body.scrollHeight;
+
+        if (defaulHeight < h) {
+            frm.style.height = h + "px";
+        }
+
+    }
+
+    resize(document.getElementById("frmGlobal"))
+</script>
 </body>
 </html>

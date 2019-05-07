@@ -4,12 +4,25 @@ session_start();
 include '../../../config.php';
 include '../opendb.php';
 
-if($_REQUEST[ind] == 0 or $_REQUEST[ind] == 2){
-	$sql = "SELECT CUUSUARIO  FROM cantprosdb.C_USUARIOS WHERE `CUUSUARIO`='$_REQUEST[nombreUsuario]' and `CUAPELLIDOS`= '$_REQUEST[apellidosUsuario]' and `CUEMAIL`='$_REQUEST[email]';";
+$userNombre = $_REQUEST['nombreUsuario'];
+$userApellido = $_REQUEST['apellidosUsuario'];
+$userEmail = $_REQUEST['email'];
+$userGenero = $_REQUEST['genero'];
+$userPassword = $_REQUEST['pass'];
+$userTelefono = $_REQUEST['telefono'];
+$userPregunta = $_REQUEST['pregunta'];
+$userRespuesta = $_REQUEST['respuesta'];
+$userHospital = $_REQUEST['hospital'];
+$userPuesto = $_REQUEST['puesto'];
+
+$idUsuario = $_SESSION["ID_USUARIO"];
+
+if($_REQUEST['ind'] == 0 or $_REQUEST['ind'] == 2){
+	$sql = "SELECT CUUSUARIO  FROM cantprosdb.C_USUARIOS WHERE `CUUSUARIO`='$userNombre' and `CUAPELLIDOS`= '$userApellido' and `CUEMAIL`='$userEmail';";
 
 	$registros = mysqli_query($conexion,$sql);
 	$error = mysqli_error($conexion);
-	$num_rows = mysql_numrows($result);
+	//$num_rows = mysql_numrows($result);
 
 	$rows = "";
 	while($row = mysqli_fetch_assoc($registros)) {
@@ -19,12 +32,13 @@ if($_REQUEST[ind] == 0 or $_REQUEST[ind] == 2){
 	if($rows > ""){
 		
 	} else {
-		$sql="INSERT INTO `C_USUARIOS`(`CUUSUARIO`,`CUAPELLIDOS`,`CUGENERO`,`CUPASS`,`CUEMAIL`,`CUTELEFONO`,
-		`CUPREGUNTA`,`CURESPUESTA`,`CUHOSPITAL`,`CUPUESTO`) VALUES ('$_REQUEST[nombreUsuario]',
-		'$_REQUEST[apellidosUsuario]','$_REQUEST[genero]', '$_REQUEST[pass]', '$_REQUEST[email]', '$_REQUEST[telefono]', '$_REQUEST[pregunta]', '$_REQUEST[respuesta]', '$_REQUEST[hospital]', '$_REQUEST[puesto]');";
+		$sql="INSERT INTO `C_USUARIOS`(`CUUSUARIO`,`CUAPELLIDOS`,`CUGENERO`,`CUPASS`,`CUEMAIL`,`CUTELEFONO`, `CUPREGUNTA`,`CURESPUESTA`,`CUHOSPITAL`,`CUPUESTO`) VALUES 
+              ($userNombre, '$userApellido','$userGenero', '$userPassword', '$userEmail', '$userTelefono', '$userPregunta', '$userRespuesta', '$userHospital', '$userPuesto');";
 	}
 }else{
-	$sql="UPDATE `cantprosdb`.`C_USUARIOS` SET `CUUSUARIO`='$_REQUEST[nombreUsuario]',`CUAPELLIDOS`= '$_REQUEST[apellidosUsuario]',`CUGENERO`='$_REQUEST[genero]',`CUPASS`='$_REQUEST[pass]', `CUEMAIL`='$_REQUEST[email]',`CUTELEFONO`='$_REQUEST[telefono]',`CUPREGUNTA`='$_REQUEST[pregunta]', `CURESPUESTA`='$_REQUEST[respuesta]',`CUHOSPITAL`='$_REQUEST[hospital]', `CUPUESTO`='$_REQUEST[puesto]' WHERE `ID_USUARIO` = {$_SESSION["ID_USUARIO"]};";
+	$sql="UPDATE `cantprosdb`.`C_USUARIOS` SET 
+          `CUUSUARIO`='$userNombre',`CUAPELLIDOS`= '$userApellido',`CUGENERO`='$userGenero',`CUPASS`='$userPassword', `CUEMAIL`='$userEmail',`CUTELEFONO`='$userTelefono',
+          `CUPREGUNTA`='$userPregunta', `CURESPUESTA`='$userRespuesta',`CUHOSPITAL`='$userHospital', `CUPUESTO`='$userPuesto' WHERE `ID_USUARIO` = {$idUsuario};";
 }
 
     //Envia mail usuario
@@ -32,7 +46,7 @@ if($_REQUEST[ind] == 0 or $_REQUEST[ind] == 2){
     $error = mysqli_error($conexion);
     
     
-    $para  = $_REQUEST[email];
+    $para  = $userEmail;
     //$para  = 'garenas@sysware.com.mx';
     $titulo = 'Registro de Usuario';
     
@@ -57,7 +71,7 @@ if($_REQUEST[ind] == 0 or $_REQUEST[ind] == 2){
 								<td style="width: 50%; font-weight: bold">
 									<label style="margin-left: 100px">Bienvenido</label>
 								</td>
-								<td style="width: 50%">'. $_REQUEST[nombreUsuario] . ' ' . $_REQUEST[apellidosUsuario] . '</td>
+								<td style="width: 50%">'. $userNombre . ' ' . $userApellido . '</td>
 							</tr>
 							<tr>
 								<td colspan="2">
@@ -110,14 +124,14 @@ if($_REQUEST[ind] == 0 or $_REQUEST[ind] == 2){
 							</tr>
                             <tr>
 								<td style="text-align: center;" colspan="2">
-									<h3>Un usuario nuevo se registro, por favor valide la información para que el usuario pueda accesar al sistema.</h3>
+									<h3>Un usuario nuevo se registro, por favor valide la informaciï¿½n para que el usuario pueda accesar al sistema.</h3>
 								</td>
 							</tr>
 							<tr>
 								<td style="width: 50%; font-weight: bold">
 									<label style="margin-left: 100px">Nombre</label>
 								</td>
-								<td style="width: 50%">'. $_REQUEST[nombreUsuario] . ' ' . $_REQUEST[apellidosUsuario] . '</td>
+								<td style="width: 50%">'. $userNombre . ' ' . $userApellido . '</td>
 							</tr>
 							<tr>
 								<td colspan="2">
@@ -150,16 +164,16 @@ if($_REQUEST[ind] == 0 or $_REQUEST[ind] == 2){
     
     // Enviarlo
     mail($para, $titulo, $mensaje, $cabeceras);
-	
-	if($rows > ""){
-		$response = "1";
-	}else{
+
+	if(!isset($rows)){
+        $response = "1";
+	} else {
 		$response = array(
         'status' => true,
         'message' => 'Success'
     	);
 	}
-	
+
 
 
 echo json_encode($response);

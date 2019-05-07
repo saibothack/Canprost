@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 include '../../../config.php';
 include '../opendb.php';
 
-$iHospital = (int)$_REQUEST[idRegistro];
+$iHospital = (int)$_REQUEST['idRegistro'];
 
 $sql = "UPDATE `cantprosdb`.`C_HOSPITALES`
 		SET ESTATUS = 0, `USUARIO_FINAL` = {$_SESSION['ID_USUARIO']} , `FECHA_FINAL` = NOW() WHERE `ID_HOSPITAL` = {$iHospital};";
