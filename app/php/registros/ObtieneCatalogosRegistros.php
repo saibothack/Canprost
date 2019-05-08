@@ -38,7 +38,7 @@ $CAT_ETAPIFICACION_CLINICA_M=21;
 $results=null;
 $catalogos = array();
     //$sql = "SELECT IDID_OPCION_CAMPO, ETIQUETA_OPCION_CAMPO  FROM cantprostdbC_RELACION_REGISTROS where ID_REGISTRO=-1 AND ID_TIPO_CAMPO=$id;";
-$sql = "SELECT distinct ID_TIPO_CAMPO FROM cantprosdb.C_RELACION_REGISTROS where ID_REGISTRO=-1";
+$sql = "SELECT distinct ID_TIPO_CAMPO FROM cantprosdb.C_RELACION_REGISTROS where ID_REGISTRO = -1 AND ID_ESTATUS = 1;";
 $results = getSelectV($conexion, $sql);
 foreach ($results as $row ){
     $IdCatalogo = $row["ID_TIPO_CAMPO"];
@@ -46,7 +46,7 @@ foreach ($results as $row ){
     //array_push($catalogos['campo_' . $IdCatalogo], $row);
 }
 
-$sql = "SELECT ID_TIPO_CAMPO, ID_OPCION_CAMPO, ETIQUETA_OPCION_CAMPO  FROM cantprosdb.C_RELACION_REGISTROS where ID_REGISTRO=-1";
+$sql = "SELECT ID_TIPO_CAMPO, ID_OPCION_CAMPO, ETIQUETA_OPCION_CAMPO  FROM cantprosdb.C_RELACION_REGISTROS where ID_REGISTRO = -1 AND ID_ESTATUS = 1;";
 $results = getSelectV($conexion, $sql);
 foreach ($results as $row ){
     $IdCatalogo = $row["ID_TIPO_CAMPO"];
