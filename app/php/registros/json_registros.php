@@ -133,6 +133,8 @@ SELECT C_REGISTROS.CRRFC as VALOR,  'form_registro.sRFC' AS propiedad FROM cantp
  UNION ALL
 SELECT C_REGISTROS.CRTABAQUISMO as VALOR,  'form_dgenerales.rTabaquismo' AS propiedad FROM cantprosdb.C_REGISTROS where id_registro=$idRegistro
  UNION ALL
+ SELECT C_REGISTROS.OTRO_PREVIO as VALOR,  'form_previo.sOtroTratamientoPreventivo' AS propiedad FROM cantprosdb.C_REGISTROS where id_registro=$idRegistro
+ UNION ALL
  SELECT C_REGISTROS.CRHISTORIAL_FAMILIAR as VALOR,  'form_dgenerales.iFamiliaCancer' AS propiedad FROM cantprosdb.C_REGISTROS where id_registro=$idRegistro
  UNION ALL
 SELECT C_SIN_TRATAMIENTO.CRMENSAJE as VALOR,  'form_sintratamiento.dNivelSintratamiento' AS propiedad FROM cantprosdb.C_SIN_TRATAMIENTO where id_registro=$idRegistro 

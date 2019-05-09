@@ -28,7 +28,6 @@ foreach( $_POST as $key => $value ) {
 
             $sql="INSERT INTO `cantprosdb`.`C_RELACION_REGISTROS`(`ID_REGISTRO`,`ID_TIPO_CAMPO`,`ID_OPCION_CAMPO`,`ETIQUETA_OPCION_CAMPO`,`TIPO_RELACION`,`NOMBRE_RELACION`) SELECT '$IdRegistro ',
 '$id','$valor',`ETIQUETA_OPCION_CAMPO`,`TIPO_RELACION`,`NOMBRE_RELACION` FROM `cantprosdb`.`C_RELACION_REGISTROS` WHERE `ID_REGISTRO`=-1 AND `ID_TIPO_CAMPO`=$id and `ID_OPCION_CAMPO`=$valor;";
-            //echo($sql);
             mysqli_query($conexion,$sql);
         }
     } else {
@@ -48,7 +47,10 @@ foreach( $_POST as $key => $value ) {
 
 //seccion datos
 
-$dFechaOrquiectomia=isset($_REQUEST["dFechaOrquiectomia"])?$_REQUEST["dFechaOrquiectomia"]:"";
+
+$dFechaOrquiectomia=($_REQUEST["dFechaOrquiectomia"] != "") ? $_REQUEST["dFechaOrquiectomia"] : "NULL";
+
+//$dFechaOrquiectomia=isset($_REQUEST["dFechaOrquiectomia"])?$_REQUEST["dFechaOrquiectomia"]:"NULL";
 $sCualLHRH=isset($_REQUEST["sCualLHRH"])?$_REQUEST["sCualLHRH"]:"";
 $dFechaInicioLHRH=isset($_REQUEST["dFechaInicioLHRH"])?$_REQUEST["dFechaInicioLHRH"]:"";
 $dFechaInicioAntagonistaLHRH=isset($_REQUEST["dFechaInicioAntagonistaLHRH"])?$_REQUEST["dFechaInicioAntagonistaLHRH"]:"";

@@ -28,7 +28,7 @@ $_SESSION['rfc']="";
 <body>
 
 <div id="dialog" hidden>
-	<iframe id="myIframe" src="" width="900" height="600" style="overflow-y: hidden;" frameBorder="0"></iframe>
+	<iframe id="myIframe" src="" width="915" height="600" style="overflow-y: hidden;" frameBorder="0"></iframe>
 </div>
 <h1>Nuevo Registro</h1>
 	<div id="tabs" class="wtabs">
@@ -37,10 +37,13 @@ $_SESSION['rfc']="";
 			<li><a href="#tabs-1">Nuevo</a></li>
 			<li><a href="#tabs-2">1 Datos Generales</a></li>
 			<li><a href="#tabs-3">2 Diagnóstico</a></li>
-			<li><a href="#tabs-4">3 Previo</a></li>
-			<li><a href="#tabs-5">4 Metástasis</a></li>
-			<li><a href="#tabs-6">5 Progresión</a></li>
-			<li><a href="#tabs-7">6 Estatus</a></li>
+            <li><a href="#tabs-10">3 Previo</a></li>
+			<li><a href="#tabs-4" hidden>3 Cirugía</a></li>
+			<li><a href="#tabs-5" hidden>4 Radioterapia</a></li>
+			<li><a href="#tabs-6">4 Metástasis</a></li>
+			<li><a href="#tabs-7">5 Progresión</a></li>
+			<li><a href="#tabs-8" hidden>7 Ningún tratamiento</a></li>
+			<li><a href="#tabs-9">6 Estatus</a></li>
 		</ul>
 		<!--Inicia seccion nuevo-->
 		<div id="tabs-1">
@@ -49,8 +52,10 @@ $_SESSION['rfc']="";
 				<li>Datos Generales</li>
 				<li>Diagnóstico</li>
 				<li>Previo</li>
+				<!--<li>Radio Terapia</li>-->
 				<li>Metástasis</li>
 				<li>Progresión</li>
+				<!--<li>Ningún tratamiento</li>-->
 				<li>Estatus</li>
 			</ul>
 			<br>
@@ -334,26 +339,840 @@ $_SESSION['rfc']="";
 
 		<!--Empieza seccion cirugia-->
 		<div id="tabs-4">
-			<form class="form-horizontal" id="form_previo">
+			<form class="form-horizontal" id="form_cirugia">
 				<div class="form-group">
-					<label for="iTipologia" class="col-sm-2 control-label">Tratamiento previo</label>
-					<div class="col-sm-5">
-
-                        <div id="rg_campo_77" class="col-sm-12">
-                        </div>
-					</div>
-					<div id="divTratamientoPreventivoOtro" hidden>
-						<label for="sOtroTratamientoPreventivo" class="col-sm-2 control-label">Especificar otro</label>
+					<div id="divFechaCirugia">
+						<label for="dCirugia" class="col-sm-2 control-label">Fecha de Cirugia</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" name="sOtroTratamientoPreventivo" id="sOtroTratamientoPreventivo" maxlength="100">
+							<input type="date"  class="form-control" name="dCirugia" id="dCirugia" placeholder="Fecha de Cirugia" >
 						</div>
 					</div>
+					<!--<label for="sNombres" class="col-sm-1 control-label">Abordaje</label>
+
+					<div id="rg_campo_22" class="col-sm-5">
+					</div>
+                    <div id="EspecificaOtro" hidden>
+                        <label for="iEspecificarabordaje" class="col-sm-2 control-label">Especificar</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="iEspecificarabordaje" class="form-control" maxlength="50" placeholder="Especificar">
+                        </div>
+
+                    </div>-->
 				</div>
 
 				<div class="form-group">
+					<label for="campo_23" class="col-sm-2 control-label">Abordaje</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_23" name="campo_23">
+							<!--<option value="" class="form-control">Seleccione</option>
+							<option value="1" class="form-control">Abierta</option>
+							<option value="2" class="form-control">Laparoscópica</option>
+							<option value="3" class="form-control">Robótica</option>-->
+						</select>
+					</div>
+					<script>
+						function cargaEspecificar(){
+							if($("#campo_23").val() == 1){
+								$("#divAbierta").show()
+								$("#divLaparoscopica").hide()
+								$("#divRobotica").hide()
+							}else{
+								if($("#campo_23").val() == 2){
+									$("#divAbierta").hide()
+									$("#divLaparoscopica").show()
+									$("#divRobotica").hide()
+								}else{
+									if($("#campo_23").val() == 3){
+										$("#divAbierta").hide()
+										$("#divLaparoscopica").hide()
+										$("#divRobotica").show()
+									}
+								}
+							}
+						}
+					</script>
+					<div id="divAbierta" hidden>
+						<label for="iModalidadDiagnostico" class="col-sm-2 control-label">Abierta</label>
+						<div class="col-sm-4">
+							<select class="form-control" id="campo_24" name="campo_24">
+								<!--<option value="" class="form-control">Seleccione</option>
+								<option value="1" class="form-control">Retropúbica</option>
+								<option value="2" class="form-control">Perineal</option>
+								<option value="3" class="form-control">Retrógrada</option>
+								<option value="4" class="form-control">Anterógrada</option>-->
+							</select>
+						</div>
+					</div>
+					<div id="divLaparoscopica" hidden>
+						<label for="iModalidadDiagnostico" class="col-sm-2 control-label">Laparoscópica</label>
+						<div class="col-sm-4">
+							<select class="form-control" id="campo_25" name="campo_25">
+								<!--<option value="" class="form-control">Seleccione</option>
+								<option value="1" class="form-control">Transperitoneal</option>
+								<option value="2" class="form-control">Extraperitoneal</option>
+								<option value="3" class="form-control">Extrafascial</option>
+								<option value="2" class="form-control">Neuro-Preservadora Unilateral</option>
+								<option value="3" class="form-control">Neuro-Preservadora Bilateral</option>-->
+							</select>
+						</div>
+					</div>
+					<div id="divRobotica" hidden>
+						<label for="iModalidadDiagnostico" class="col-sm-2 control-label">Robótica</label>
+						<div class="col-sm-4">
+							<select class="form-control" id="campo_26" name="campo_26">
+								<!--<option value="" class="form-control">Seleccione</option>
+								<option value="1" class="form-control">Transperitoneal</option>
+								<option value="2" class="form-control">Extraperitoneal</option>
+								<option value="3" class="form-control">Extrafascial</option>
+								<option value="4" class="form-control">Anterógrada</option>
+								<option value="4" class="form-control">Neuro-Preservadora Unilateral</option>
+								<option value="4" class="form-control">Neuro-Preservadora Bilateral</option>-->
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iSangradoIntra" class="col-sm-2 control-label">Sangrado Estimado Intra-operatorio</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_27" name="campo_27">
+							<!--<option value="" class="form-control">Seleccione</option>
+							<?php
+							for($x = 0;$x <= 5; $x++){
+							?>
+							<option value="<?php echo($x)?>" class="form-control"><?php echo($x)?> litros</option>
+							<?php
+							}
+							?>
+							<option value="6" class="form-control">Desconocido</option>--->
+						</select>
+					</div>
+					<label for="iNumPaquetes" class="col-sm-2 control-label">Número de Paquetes Globulares Transfundidos</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_28" name="campo_28">
+							<!--<option value="" class="form-control">Seleccione</option>
+							<?php
+							for($x = 0;$x <= 10; $x++){
+							?>
+							<option value="<?php echo($x)?>" class="form-control"><?php echo($x)?> unidades</option>
+							<?php
+							}
+							?>
+							<option value="11" class="form-control">Desconocido</option>-->
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div id="divComplicaciones">
+						<label for="iComplicaciones" class="col-sm-2 control-label">Complicaciones Transoperatorias <span class="required-label">*</span></label>
+						<div id="rg_campo_29">
+						<!--	<input type="radio" onClick="cargaComplicaciones()" name="iComplicaciones" value="1">Si
+						</div>
+						<div class="col-sm-2">
+							<input type="radio" onClick="cargaComplicaciones()" name="iComplicaciones" value="0" checked>No-->
+						</div>
+					</div>
+					<!-- modificación sobre el sistema 13/10/2017 se sube -->
+					<label for="sEtapaPatologica" class="col-sm-offset-2 col-sm-2 control-label">Etapa patológica</label>
+					<div class="col-sm-4">
+						<input type="text" name="sEtapaPatologica" maxlength="100" class="form-control" placeholder="Etapa patológica">
+					</div>
+					<!-- end -->
+				</div>
+				<script>
+					$(document).ready(function(){
+						$("#rg_campo_29").click(function(){
+							if($('input[name=campo_29]:checked').val() == 1){
+								$("#divEspec_Motivo").show()
+								//$("#divEspec_Motivo1").show()
+							}else{
+								$("#divEspec_Motivo").hide()
+								//$("#divEspec_Motivo1").hide()
+							}
+						});
+					});
+				</script>
+				<div class="form-group" id="divEspec_Motivo" hidden>
+					<label for="iEspecificar" class="col-sm-2 control-label">Especificar</label>
+					<div class="col-sm-4">
+						<input type="text" name="iEspecificar" class="form-control" maxlength="50" placeholder="Especificar">
+					</div>
+					<div hidden>
+					<label for="sMotivo" class="col-sm-2 control-label">Motivo</label>
+					<div class="col-sm-4">
+						<input type="text" name="sMotivo" maxlength="100" class="form-control" placeholder="Motivo">
+					</div>
+					</div>
+				</div>
+				<div class="form-group" id="divEspec_Motivo1" hidden>
+					<label for="iDiasEstancia" class="col-sm-2 control-label">Días de Estancia</label>
+					<div class="col-sm-4">
+                        <select class="form-control" id="campo_30" name="campo_30">
+						<!--	<option value="" class="form-control">Seleccione</option>
+							<?php
+							for($x = 0;$x <= 30; $x++){
+							?>
+							<option value="<?php echo($x)?>" class="form-control"><?php echo($x)?> dias</option>
+							<?php
+							}
+							?>
+							<option value="31" class="form-control">Desconocido</option>-->
+						</select>
+					</div>
+					<label for="iDiasPermanenciaSonda" class="col-sm-2 control-label">Días de Permanencia de la Sonda</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_31" name="campo_31">
+                        <!--<option value="" class="form-control">Seleccione</option>
+							<?php
+							for($x = 0;$x <= 30; $x++){
+							?>
+							<option value="<?php echo($x)?>" class="form-control"><?php echo($x)?> dias</option>
+							<?php
+							}
+							?>
+							<option value="31" class="form-control">Desconocido</option>-->
+						</select>
+					</div>
+				</div>
+				<div class="form-group" hidden>
+
+				<!-- modificación sobre el sistema 13/10/2017 se sube al lado de complicaciones transoperatorias
+					<label for="sEtapaPatologica" class="col-sm-2 control-label">Etapa patológica</label>
+					<div class="col-sm-4">
+						<input type="text" name="sEtapaPatologica" maxlength="100" class="form-control" placeholder="Etapa patológica">
+					</div>
+					-->
+					<label for="iGleason" class="col-sm-2 control-label">Gleason (Prostatectomía Radical)</label>
+					<div class="col-sm-2">
+						<input type="number" name="iGleason1" min="1" max="10" maxlength="2" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<input type="number" name="iGleason2" min="1" max="10" maxlength="2" class="form-control">
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label for="iModalidadDiagnostico" class="col-sm-4 control-label">Resultados Post-Cirugía</label>
+				</div>
+				<div class="form-group">
+					<label for="iComplicacionesTardias" class="col-sm-2 control-label">Complicaciones Tardías</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_32" onChange="cargaEspComplicaciones()">
+							<!--
+							<option value="" class="form-control">Seleccione</option>
+							<option value="1" class="form-control">Estenosis</option>
+							<option value="2" class="form-control">Incontinencia</option>
+							<option value="3" class="form-control">Linfocele</option>
+							<option value="4" class="form-control">Ninguna</option>
+							<option value="5" class="form-control">Otras</option>
+							-->
+						</select>
+					</div>
+					<div id="divEspecificarComplicacion" hidden>
+						<label for="sEspecificarComplicacion" class="col-sm-2 control-label">Especificar otro</label>
+						<div class="col-sm-4">
+							<input type="text" name="sEspecificarComplicacion" class="form-control" placeholder="Especificar otro">
+						</div>
+					</div>
+				</div>
+				<script>
+					function cargaEspComplicaciones(){
+						if($('#campo_32').val() == 5){
+							$("#divEspecificarComplicacion").show()
+						}else{
+							$("#divEspecificarComplicacion").hide()
+						}
+					}
+				</script>
+				<div class="form-group">
+					<label for="iModalidadDiagnostico" class="col-sm-2 control-label">Continencia (a un año)</label>
+					<div id="rg_campo_33">
+					<!--	<input type="radio" name="iContinencia" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iContinencia" value="2">No
+
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="iContinencia" value="3">Desconocido
+						-->
+					</div>
+					<label for="iPotencia" class="col-sm-2 control-label">Potencia (a un año)</label>
+					<div id="rg_campo_34">
+						<!--
+						<input type="radio" name="iPotencia" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iPotencia" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="iPotencia" value="3">Desconocido
+						-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sApenPost" class="col-sm-2 control-label">APE Post-Operatorio (Desde 6 semanas hasta 3 meses)</label>
+					<div class="col-sm-4">
+						<input type="text" name="sApenPost" class="form-control">Ng/ml
+					</div>
+					<label for="iApeDesconocido" class="col-sm-2 control-label">APE Desconocido</label>
+					<div class="col-sm-4">
+						<input type="radio" name="iApeDesconocido" value="1">Se refiere a que NO se tiene registrado el APE desde 6 semanas hasta 3 meses
+					</div>
+				</div>
+				<div class="form-group">
+					<!--<label for="iModalidadDiagnostico" class="col-sm-2 control-label">Cuánto tiempo después (meses)</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_45" name="campo_45">
+							<!--
+							<option value="" class="form-control">Seleccione</option>
+							<?php
+							for($x = 1;$x <= 12; $x++){
+							?>
+							<option value="<?php echo($x)?>" class="form-control"><?php echo($x)?> meses</option>
+							<?php
+							}
+							?>
+							
+						</select>
+					</div>-->
+					<label for="iRadioterapia" class="col-sm-2 control-label">Radioterapia Adyuvante</label>
+					<div id="rg_campo_35">
+						<!--
+						<input type="radio" name="iRadioterapia" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iRadioterapia" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="iRadioterapia" value="3">Desconocido
+						-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iPogresionPost" class="col-sm-2 control-label">Progresión Post-Radioterapia</label>
+					<div id="rg_campo_36">
+						<!--
+						<input type="radio" name="iPogresionPost" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iPogresionPost" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="iPogresionPost" value="3">Desconocido
+						-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iBloqueHormonal" class="col-sm-2 control-label">Bloqueo Hormonal Post-Cirugía</label>
+					<div id="rg_campo_37" >
+						<!---
+						<input type="radio" onClick="cargaCualBloqueo()" name="iBloqueHormonal" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" onClick="cargaCualBloqueo()" name="iBloqueHormonal" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" onClick="cargaCualBloqueo()" name="iBloqueHormonal" value="3">Desconocido
+						--->
+					</div>
+					<div id="divCualBloqueo" hidden>
+						<label for="iCualBloqueo" class="col-sm-2 control-label">Cuál</label>
+						<div class="col-sm-4">
+							<select class="form-control" id="campo_43">
+								<!--<option value="" class="form-control">Seleccione</option>
+								<option value="1" class="form-control">Quirúrgico</option>
+								<option value="2" class="form-control">Farmacológico</option>-->
+							</select>
+						</div>
+					</div>
+				</div>
+                <div class="form-group">
+                    <label for="iRecurrenciaBioquimica" class="col-sm-2 control-label">Recurrencia bioquímica</label>
+                    <div id="rg_campo_40">
+                        <!--
+                        <input type="radio" onClick="cargaCualRecurrencia()" name="iRecurrenciaBioquimica" value="1">Si
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="radio" onClick="cargaCualRecurrencia()" name="iRecurrenciaBioquimica" value="2">No
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="radio" onClick="cargaCualRecurrencia()" name="iRecurrenciaBioquimica" value="3">Desconocido
+                        -->
+                    </div>
+                    <div id="divCualRecurrencia">
+                        <label for="iModalidadDiagnostico" class="col-sm-2 control-label">Tratamiento</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="campo_44" name="campo_44">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+				<script>
+					function cargaCualBloqueo(){
+						if($("input[name=rg_campo_37]").val() == 1){
+							$("#divCualBloqueo").show()
+						}else{
+							$("#divCualBloqueo").hide()
+						}
+					}
+				</script>
+				<!--<div class="form-group">
+					<label for="iAdyuvanteRescate" class="col-sm-2 control-label">Adyuvante o de rescate</label>
+					<div class="col-sm-1">
+						<input type="checkbox" name="iAdyuvanteRescate" value="1">
+					</div>
+					<label for="dFechaInicioAdyuvante" class="col-sm-offset-3 col-sm-2 control-label">Fecha de inicio <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaInicioAdyuvante" id="dFechaInicioAdyuvante" placeholder="Fecha de Nacimiento" required>
+					</div>
+				</div>-->
+				<div class="form-group">
+					<label for="iTipologia" class="col-sm-2 control-label">Tipología de recurrencia</label>
+					<div class="col-sm-5">
+
+                        <div id="rg_campo_42" class="col-sm-12">
+                        </div>
+                        <!--	<select class="form-control" id="campo_42" name="campo_42">
+                                <option value="" class="form-control">Seleccione</option>
+                                <option value="1" class="form-control">Por marcador (APE)</option>
+                                <option value="2" class="form-control">Por imagen</option>
+						</select>-->
+					</div>
+				</div>
+
+				<script>
+					function cargaCualBloqueo(){
+						if($("input[name=iRecurrenciaBioquimica]:checked").val() == 1){
+							$("#divCualRecurrencia").show()
+						}else{
+							$("#divCualRecurrencia").hide()
+						}
+					}
+				</script>
+				<div class="form-group">
+					<label for="sApeRecurrencia" class="col-sm-2 control-label">APE de recurrencia</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="sApeRecurrencia" name="sApeRecurrencia">
+					</div>
+					<label for="dFechaRecurrencia" class="col-sm-2 control-label">Fecha recurrencia <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaRecurrencia" id="dFechaRecurrencia" placeholder="Fecha de recurrencia" >
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<!--<label for="iRadioterapia" class="col-sm-2 control-label">Radioterapia</label>
+					<div id="rg_campo_38">
+
+					</div>-->
+					<label for="iProgresionPost" class="col-sm-2 control-label">Progresión Post-Cirugía</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_39" name="campo_39">
+							<!--
+							<option value="" class="form-control">Seleccione</option>
+							<option value="1" class="form-control">Si</option>
+							<option value="1" class="form-control">NO</option>
+							<option value="1" class="form-control">Por marcador (APE)</option>
+							<option value="1" class="form-control">Por imagen</option>
+							-->
+						</select>
+					</div>
+				</div>				
+				
+				<div class="form-group">
+					<!--<label for="iRadioterapiaRescate" class="col-sm-2 control-label">Radioterapia de rescate</label>
+					<div id="rg_campo_41" >
+
+					</div>-->
+					<label for="iModalidadDiagnostico" class="col-sm-2 control-label">Comentarios</label>
+					<div class="col-sm-4">
+						<textarea class="form-control" maxlength="100" name="Icomentarios" id="Icomentarios" placeholder="Comentarios"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iNumeroConsultas" class="col-sm-2 control-label">Número total de consultas</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" id="iNumeroConsultas" name="iNumeroConsultas">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-9 col-sm-3">
+						<!--<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>-->
+						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarCirugia()">Continuar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--termina seccion cirugia-->
+
+		<!--Empieza seccion radioterapia-->
+		<div id="tabs-5">
+			<form class="form-horizontal" id="form_radioterapia">
+				<div class="form-group">
+					<label for="iRadBloqueoHormonal" class="col-sm-2 control-label">Bloqueo hormonal</label>
+					<div id="rg_campo_46">
+						<!--
+						<input type="radio" onClick="cargaRadCualBloqueo()" name="iRadBloqueoHormonal" value="1" checked>Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" onClick="cargaRadCualBloqueo()" name="iRadBloqueoHormonal" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" onClick="cargaRadCualBloqueo()" name="iRadBloqueoHormonal" value="3">Desconocido
+						-->
+					</div>
+					<div hidden>
+					<label for="sDosis" class="col-sm-2 control-label">Dosis </label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="sDosis" placeholderotepa="Dosis" maxlength="50" required/>
+					</div>
+					</div>
+				</div>
+				<script>
+					function cargaRadCualBloqueo(){
+						if($("input[name=iRadBloqueoHormonal]:checked").val() == 1){
+							$("#divRadCualBloqueo").show()
+						}else{
+							$("#divRadCualBloqueo").hide()
+						}
+					}
+				</script>
+				<div class="form-group" hidden>
+					<label for="iDosisDesconocida" class="col-sm-2 control-label">Dosis desconocida</label>
+
+                    <div class="col-sm-2">
+                        <input value="1 " type="radio" name="iDosisDesconocida" id="iDosisDesconocida" />Si
+                    </div>
+                    <div class="col-sm-2">
+                        <input value="0" type="radio" name="iDosisDesconocida" id="iDosisDesconocida" />No
+                    </div>
+				</div>
+				<div class="form-group">
+					<label for="dFechaDosis" class="col-sm-2 control-label">Fecha de inicio <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaDosis" id="dFechaDosis" placeholder="Fecha de inicio" >
+					</div>
+					<label for="dFechaTerminoDosis" class="col-sm-2 control-label">Fecha de termino <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaTerminoDosis" id="dFechaTerminoDosis" placeholder="Fecha de termino" >
+					</div>
+				</div>
+				<div class="form-group">
+					<div id="divRadCualBloqueo" hidden>
+						<label for="iCualBloqueo" class="col-sm-2 control-label">Cual</label>
+						<div id="rg_campo_47">
+							<!--
+							<label><input name="iCualBloqueo" type="checkbox" value="1">Medico</label>
+							<label><input name="iCualBloqueo" type="checkbox" value="2">
+							Quirurgico</label>
+							<label><input name="iCualBloqueo" type="checkbox" value="3"> Monoterapia</label>
+							<label><input name="iCualBloqueo" type="checkbox" value="4"> Bloqueo total</label>
+							<label><input name="iCualBloqueo" type="checkbox" value="5"> Desconocido</label>
+							-->
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<label class="col-sm-4 control-label">Resultados Post-Radioterapia</label>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">APE nadir Post-RT (considerando 6 meses, posterior al Tx)</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" name="iApeNadir">
+					</div>
+					<label for="iComplicacionesTardias" class="col-sm-2 control-label">Complicaciones tardías (dentro de 6 meses)</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_48" name="campo_48">
+						<!--<select class="form-control" id="iComplicacionesTardias" onChange="cargEspeCompl()">
+							<option value="" class="form-control">Seleccione</option>
+							<option value="1" class="form-control">Hematuria</option>
+							<option value="2" class="form-control">Incontinencia</option>
+							<option value="3" class="form-control">Estenosis</option>
+							<option value="4" class="form-control">Rectoragia</option>
+							<option value="5" class="form-control">Desconocido</option>
+							<option value="6" class="form-control">Otro</option>-->
+						</select>
+					</div>
+				</div>
+				<script>
+					function cargEspeCompl(){
+						if($("#iComplicacionesTardias") == 6){
+					   		$("#divEspecificarComplicaciones").show()
+				   		}else{
+							$("#divEspecificarComplicaciones").hide()
+						}
+					}
+				</script>
+				<div class="form-group">
+					<label for="iRadTipologia" class="col-sm-2 control-label">Tipo de recurrencia</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_51" name="campo_51">
+							<!--<option value="" class="form-control">Seleccione</option>
+							<option value="1" class="form-control">Por marcador (APE)</option>
+							<option value="2" class="form-control">Por imagen</option>-->
+						</select>
+					</div>
+					<label for="iNumeroConsultas" class="col-sm-2 control-label">Número total de consultas</label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" name="iNumeroConsultas">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="divEspecificarComplicaciones" hidden>
+						<label for="sEspecificarComplicaciones" class="col-sm-2 control-label">Especificar otro</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="sEspecificarComplicaciones" id="sEspecificarComplicaciones" placeholder="Especificar otro" >
+						</div>
+					</div>
+					<label for="iRecurrenciaBioq" class="col-sm-2 control-label">Recurrencia bioquímica</label>
+					<div id="rg_campo_49">
+					<!--<div class="col-sm-1">
+						<input type="radio" name="iRecurrenciaBioq" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iRecurrenciaBioq" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="iRecurrenciaBioq" value="3">Desconocido
+						-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="sApeRec" class="col-sm-2 control-label">APE de recurrencia</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="sApeRec">
+					</div>
+					<label for="dFechaRec" class="col-sm-2 control-label">Fecha de recurrencia <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaRec" id="dFechaRec" placeholder="Fecha de recurrencia" >
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="iProgPostRadio" class="col-sm-2 control-label">Progresión Post-Radioterapia</label>
+					<div id="rg_campo_50">
+						<!--
+						<input type="radio" name="iProgPostRadio" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" name="iProgPostRadio" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" name="iProgPostRadio" value="3">Desconocido
+						-->
+					</div>
+					<label for="dFechaInicioProg" class="col-sm-2 control-label">Fecha de inicio de progresión Post-Radioterapia <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaInicioProg" id="dFechaInicioProg" placeholder="Fecha de inicio de progresión" >
+					</div>
+				</div>
+				<div class="form-group">
 					<div class="col-sm-offset-9 col-sm-3">
 						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
-						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarPrevio()">Continuar</button>
+						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarRadioterapia()">Continuar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--termina seccion radioterapia-->
+
+		<!--Empieza seccion metastasis-->
+		<div id="tabs-6">
+
+			<form class="form-horizontal" id="form_metastasis">
+                <div class="form-group">
+                    <label for="dFechaOrquiectomia" class="col-sm-2 control-label">Fecha de Inicio <span class="required-label">*</span></label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="dFechametastasis" id="dFechametastasis" placeholder="Fecha de Inicio" >
+                    </div>
+                </div>
+                <div class="form-group">
+					<label for="iOrquiectomia" class="col-sm-2 control-label">Orquiectomía</label>
+					<div id="rg_campo_52">
+					<!--<div class="col-sm-1">
+						<input type="radio" onClick="cargaOrquiectomia()" name="iOrquiectomia" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" onClick="cargaOrquiectomia()" name="iOrquiectomia" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" onClick="cargaOrquiectomia()" name="iOrquiectomia" value="3">Desconocido-->
+					</div>
+					<div id="divMet1" hidden>
+						<label for="dFechaOrquiectomia" class="col-sm-2 control-label">Fecha de Orquitectomía <span class="required-label">*</span></label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control" name="dFechaOrquiectomia" id="dFechaOrquiectomia" placeholder="Fecha de Orquitectomía" >
+						</div>
+					</div>
+				</div>
+				<script>
+					$(document).ready(function(){
+						$("#rg_campo_52").click(function(){
+							if($('input[name=campo_52]:checked').val() == 1){
+								for(var x = 1;x <= 1; x++){
+									$("#divMet" + x).show()
+								}
+							}else{
+								for(var x = 1;x <= 1; x++){
+									$("#divMet" + x).hide()
+								}
+							}
+						});
+					});
+				</script>
+				<div class="form-group" id="divMet2" >
+					<label for="iAnalogoLHRH" class="col-sm-2 control-label">Análogo LHRH</label>
+					<div id="rg_campo_53">
+					<!--<div class="col-sm-1">
+
+						<input type="radio" onClick="cargaCualLHRH()" name="iAnalogoLHRH" value="1">Si
+					</div>
+					<div class="col-sm-1">
+						<input type="radio" onClick="cargaCualLHRH()" name="iAnalogoLHRH" value="2">No
+					</div>
+					<div class="col-sm-2">
+						<input type="radio" onClick="cargaCualLHRH()" name="iAnalogoLHRH" value="3">Desconocido-->
+					</div>
+					<div id="sCualLHRH" hidden>
+						<label for="sCualLHRH" class="col-sm-2 control-label">Cuál </label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="sCualLHRH" id="sCualLHRH" placeholder="Cual" maxlength="50">
+						</div>
+					</div>
+					<div class="divFechaInicioLHRH">
+						<label for="dFechaInicioLHRH" class="col-sm-2 control-label">Fecha de inicio Análogo LHRH <span class="required-label">*</span></label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control" name="dFechaInicioLHRH" id="dFechaInicioLHRH" placeholder="Fecha de inicio Análogo LHRH" >
+						</div>
+					</div>
+				</div>
+				<script>
+					function cargaCualLHRH(){
+						if($("input[name=iAnalogoLHRH]:checked") == 1){
+					   		$("#divFechaOrquiectomia").show()
+							$("#divFechaInicioLHRH").show()
+				   		}else{
+							$("#divFechaOrquiectomia").hide()
+							$("#divFechaInicioLHRH").hide()
+						}
+					}
+				</script>
+				<div class="form-group" id="divMet3" >
+					<label for="inputEmail3" class="col-sm-2 control-label">Antagonista LHRH</label>
+					<div id="rg_campo_54">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+					<label class="col-sm-2 control-label">Fecha de inicio Antagonista LHRH <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaInicioAntagonistaLHRH" id="dFechaInicioAntagonistaLHRH" placeholder="Fecha de inicio Análogo LHRH" >
+					</div>
+				</div>
+				<div class="form-group" id="divMet4" >
+					<label for="inputEmail3" class="col-sm-2 control-label">Anti andrógeno</label>
+					<div id="rg_campo_55">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>
+					</div>-->
+					</div>
+					<div hidden>
+					<label class="col-sm-2 control-label">Cuál <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="" id="sCualAntiandrogeno" placeholder="Cual" maxlength="50" required>
+					</div>
+					<label class="col-sm-2 control-label">Dosis <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="sDosisAntiandrogeno" id="sDosisAntiandrogeno" placeholder="Dosis" maxlength="50" required>
+					</div>
+					</div>
+					<label class="col-sm-2 control-label">Fecha de inicio Anti andrógeno <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaInicioAntiAndrogeno" id="dFechaInicioAntiAndrogeno" placeholder="Fecha de inicio Análogo LHRH" >
+					</div>
+				</div>
+				<div class="form-group" id="divMet6" >
+					<label for="inputEmail3" class="col-sm-2 control-label">Bloqueo Hormonal Combinado (Se considera agonista LHRH más antiandrogénico o castración quirúrgica más antiandrogénico)</label>
+					<div id="rg_campo_56">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+				</div>
+				<div class="form-group">
+					<div hidden>
+					<label class="col-sm-2 control-label">Cuál <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="sCualBloqueHormonal" id="sCualBloqueHormonal" placeholder="Cual" maxlength="50" required>
+					</div>
+					</div>
+					<label class="col-sm-2 control-label">APE nadir post-Bloqueo Hormonal <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" name="APENadirPostBloqueo" id="APENadirPostBloqueo" placeholder="APE" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Quimioterapia</label>
+					<div id="rg_campo_57">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+					<label for="inputEmail3" class="col-sm-2 control-label">Hospitalización por quimioterapia</label>
+					<div id="rg_campo_58">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+				</div>
+				<div class="form-group">
+					<!--<label for="inputEmail3" class="col-sm-2 control-label">Desconocido</label>
+					<div class="col-sm-2">
+						<label><input type="checkbox" name="chkDesconocido" value="1">Desconocido</label>
+					</div>-->
+					<label for="inputEmail3" class="col-sm-offset-2 col-sm-2 control-label">Tratamiento salud ósea</label>
+					<div id="rg_campo_60">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-9 col-sm-3">
+						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
+						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarMetastasis()">Continuar</button>
 					</div>
 				</div>
 			</form>
@@ -361,7 +1180,7 @@ $_SESSION['rfc']="";
 		<!--termina seccion metastasis-->
 
 		<!--Empieza seccion progresion-->
-		<div id="tabs-6">
+		<div id="tabs-7">
 			<form class="form-horizontal" id="form_progresion">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Resistencia a la Castración</label>
@@ -499,8 +1318,31 @@ $_SESSION['rfc']="";
 		</div>
 		<!--termina seccion progresion-->
 
+		<!--Inicia modulo de ningun tratamiento-->
+		<div id="tabs-8" hidden>
+			<form class="form-horizontal" id="form_sintratamiento">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Nivel de APE <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="numer" class="form-control" name="dNivelAPE" id="dNivelAPE" placeholder="Nivel de APE" required>
+					</div>
+					<label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
+					<div class="col-sm-4">
+						<input type="text" name="dNivelSintratamiento" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-9 col-sm-3">
+						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
+						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarSinTratamiento()" >Continuar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--termina modulo de ningun tratamiento-->
+
 		<!--Inicia modulo de estatus-->
-		<div id="tabs-7">
+		<div id="tabs-9">
 			<form class="form-horizontal" id="form_estatus">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Fecha de la última consulta <span class="required-label">*</span></label>
@@ -602,6 +1444,34 @@ $_SESSION['rfc']="";
 			</form>
 		</div>
 		<!--termina modulo de estatus-->
+
+        <!--Empieza seccion previo-->
+        <div id="tabs-10">
+            <form class="form-horizontal" id="form_previo">
+                <div class="form-group">
+                    <label for="iTipologia" class="col-sm-2 control-label">Tratamiento previo</label>
+                    <div class="col-sm-5">
+
+                        <div id="rg_campo_77" class="col-sm-12">
+                        </div>
+                    </div>
+                    <div id="divTratamientoPreventivoOtro" hidden>
+                        <label for="sOtroTratamientoPreventivo" class="col-sm-2 control-label">Especificar otro</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="sOtroTratamientoPreventivo" id="sOtroTratamientoPreventivo" maxlength="100">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-9 col-sm-3">
+                        <button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
+                        <button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarPrevio()">Continuar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--termina seccion metastasis-->
 	</div>
 	
 	<!--boostrap-->
@@ -630,16 +1500,18 @@ $_SESSION['rfc']="";
 				cargaRegistroSeleccionado(<?php
 				echo($_REQUEST["ediId"])
 				?>);
-
-				$("#tabs").tabs("disable",0);
-				$("#tabs").tabs("enable",1);
-				$("#tabs").tabs({active:1});
-				$("#tabs").tabs("enable",2);
-				$("#tabs").tabs("enable",3);
-				$("#tabs").tabs("enable",4);
-				$("#tabs").tabs("enable",5);
-				$("#tabs").tabs("enable",6);
-				$("#tabs").tabs("enable",7);
+			$("#tabs").tabs("disable",0);
+			$("#tabs").tabs("enable",1);
+			$("#tabs").tabs({active:1});
+			$("#tabs").tabs("enable",2);
+			$("#tabs").tabs("enable",3);
+            $("#tabs").tabs("enable",10);
+			/*$("#tabs").tabs("enable",4);
+			$("#tabs").tabs("enable",5);*/
+			$("#tabs").tabs("enable",6);
+			$("#tabs").tabs("enable",7);
+			$("#tabs").tabs("enable",8);
+            $("#tabs").tabs("enable",9);
 
 			<?php
 				}

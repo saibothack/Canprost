@@ -75,7 +75,7 @@ oCat_Registro["REALIZADO_RMI"]=72;
 oCat_Registro["REALIZADO_PET"]=73;
 oCat_Registro["REALIZADO_GGO"]=74;
 oCat_Registro["REALIZADO_TR"]=75;
-oCat_Registro["TRATAMIENTO_PREVENTIVO"]=77;
+oCat_Registro["PREVIO"]=77;
 
 var sUrl="../../";
 var global_catalog_data=null;
@@ -90,7 +90,6 @@ function cargaRegistroSeleccionado(idRegistro,dato){
 	$.ajax({
 		type: "POST",
 		url: sUrl + "app/php/registros/"+pag[ind]+".php",
-		async: false,
 		data: {id: idRegistro},
 		success: function (xdatamain) {
 			for(var ele in xdatamain){
@@ -316,22 +315,15 @@ function validaMultiSelect(campo){
                         mostrarOcultarSeccion("divCualBloqueo",false);
                 }
                     break;
-
-                case oCat_Registro["TRATAMIENTO_PREVENTIVO"]:
-                {
-                	console.log("Validar " + oCat_Registro["BLOQUEO_TRATAMIENTO_PREVENTIVOHORMONAL"]);
-                    if (esOpcionSeleccionada(id_campo,"Otro",matrizOpciones))
-                        mostrarOcultarSeccion("divTratamientoPreventivoOtro",true);
-                    else
-                        mostrarOcultarSeccion("divTratamientoPreventivoOtro",false);
-                }
-                    break;
-
-
-
-
-
-
+				case oCat_Registro["PREVIO"]:
+				{
+					console.log("Validar " + oCat_Registro["PREVIO"]);
+					if (esOpcionSeleccionada(id_campo,"Otro",matrizOpciones))
+						mostrarOcultarSeccion("divTratamientoPreventivoOtro",true);
+					else
+						mostrarOcultarSeccion("divTratamientoPreventivoOtro",false);
+				}
+					break;
 			}
 		}
 	}
@@ -556,23 +548,16 @@ function validaRfc(){
                             cargaRegistroSeleccionado(data);
 
                             $("#tabs").tabs("enable",1);
-                            $("#tabs").tabs({ active:  1});
                             $("#tabs").tabs("enable",2);
                             $("#tabs").tabs("enable",3);
-                            $("#tabs").tabs("enable",4);
-                            $("#tabs").tabs("enable",5);
+							$("#tabs").tabs("enable",10);
+                            //$("#tabs").tabs("enable",4);
+                            //$("#tabs").tabs("enable",5);
                             $("#tabs").tabs("enable",6);
                             $("#tabs").tabs("enable",7);
-
-                            $("#tabs").tabs("enable",1);
+                            $("#tabs").tabs("enable",8);
                             $("#tabs").tabs({ active:  1});
-                            $("#tabs").tabs("enable",2);
-                            $("#tabs").tabs("enable",3);
-                            $("#tabs").tabs("enable",4);
-                            $("#tabs").tabs("enable",5);
-                            $("#tabs").tabs("enable",6);
-                            $("#tabs").tabs("enable",7);
-
+							
 							var sApP = $("#sApellidoPaterno").val();
 							var sApM = $("#sApellidoMaterno").val();
 							var sNom = $("#sNombres").val();
@@ -582,7 +567,34 @@ function validaRfc(){
 							$("#sApellidoMaternoD").val(sApM);
 							$("#sNombresD").val(sNom);
 							$("#dNacimientoD").val(sNac);
+							
 						});
+					///}else{
+						//jAlert("Favor de anotar los datos nuevos", "Recurrencia", function(){
+                          //  $('#form_registro').trigger("reset");
+						//});
+					//}
+					/*
+					jConfirm('El RFC Capturado ya existe, desea identificar al paciente como recurrente?', 'Confirmar', function(r) {
+						if (r){
+
+							//el rfc ya existe, se requiere cargar la interfaz con toda la informaci�n
+							cargaRegistroSeleccionado(data);
+
+							$("#tabs").tabs("enable",1);
+							$("#tabs").tabs("enable",2);
+							$("#tabs").tabs("enable",3);
+							$("#tabs").tabs("enable",4);
+							$("#tabs").tabs("enable",5);
+							$("#tabs").tabs("enable",6);
+							$("#tabs").tabs("enable",7);
+							$("#tabs").tabs("enable",8);
+
+						}else{
+							$('#form_registro').trigger("reset");
+						}
+
+					});*/
 				}else{
 
 					var sApP = $("#sApellidoPaterno").val();
@@ -687,15 +699,15 @@ function muestraTNM(){
 }
 
 function guardarPrevio(){
- 	$('#form_previo').validate();
+	$('#form_previo').validate();
 	if($('#form_previo').valid()){
 		$.ajax({
 			type: "POST",
 			url: sUrl+"app/php/registros/datos_previos.php",
-			data: $("#form_previo").serialize(),// {rfc:$("#sRFC").val()},
+			data: $("#form_previo").serialize(),
 			success: function(data) {
-				$("#tabs").tabs("enable",4);
-				$("#tabs").tabs({ active:  4});
+				$("#tabs").tabs("enable",6);
+				$("#tabs").tabs({ active:  6});
 			}
 		});
 	}
@@ -709,8 +721,8 @@ function guardarCirugia(){
 		url: sUrl+"app/php/registros/cirugia.php",
 		data: $("#form_cirugia").serialize(),// {rfc:$("#sRFC").val()},
 		success: function(data) {
-			$("#tabs").tabs("enable",8);
-			$("#tabs").tabs({ active:  8});
+			$("#tabs").tabs("enable",9);
+			$("#tabs").tabs({ active:  9});
 		}
 	});
 	}
@@ -724,8 +736,8 @@ function guardarRadioterapia(){
 		url: sUrl+"app/php/registros/radioterapia.php",
 		data: $("#form_radioterapia").serialize(),// {rfc:$("#sRFC").val()},
 		success: function(data) {
-			$("#tabs").tabs("enable",8);
-			$("#tabs").tabs({ active:  8});
+			$("#tabs").tabs("enable",9);
+			$("#tabs").tabs({ active:  9});
 		}
 	});
 	}
@@ -739,8 +751,8 @@ function guardarMetastasis(){
 		url: sUrl+"app/php/registros/metastasis.php",
 		data: $("#form_metastasis").serialize(),// {rfc:$("#sRFC").val()},
 		success: function(data) {
-			$("#tabs").tabs("enable",5);
-			$("#tabs").tabs({ active:  5});
+			$("#tabs").tabs("enable",9);
+			$("#tabs").tabs({ active:  9});
 		}
 	});
 	}
@@ -754,8 +766,8 @@ function guardarProgresion(){
 		url: sUrl+"app/php/registros/progresion.php",
 		data: $("#form_progresion").serialize(),// {rfc:$("#sRFC").val()},
 		success: function(data) {
-			$("#tabs").tabs("enable",6);
-			$("#tabs").tabs({ active:  6});
+			$("#tabs").tabs("enable",9);
+			$("#tabs").tabs({ active:  9});
 		}
 	});
 	}
@@ -769,8 +781,8 @@ function guardarSinTratamiento(){
 		url: sUrl+"app/php/registros/sin_tratamiento.php",
 		data: $("#form_sintratamiento").serialize(),// {rfc:$("#sRFC").val()},
 		success: function(data) {
-			$("#tabs").tabs("enable",8);
-			$("#tabs").tabs({ active:  8});
+			$("#tabs").tabs("enable",9);
+			$("#tabs").tabs({ active:  9});
 		}
 	});
 	}
@@ -891,11 +903,14 @@ function diagnosticoGuardado(){
 
 function mostrarTabs(){
 	$("#tabs").tabs("enable",3);
-	$("#tabs").tabs("enable",4);
-	$("#tabs").tabs("enable",5);
+	$("#tabs").tabs("enable",10);
+	//$("#tabs").tabs("enable",4);
+	//$("#tabs").tabs("enable",5);
 	$("#tabs").tabs("enable",6);
 	$("#tabs").tabs("enable",7);
 	$("#tabs").tabs("enable",8);
+	$("#tabs").tabs("enable",8);
+	$("#tabs").tabs("enable",9);
 	$("#tabs").tabs({active:3});
 	$('#dialog').dialog('close');
 }
@@ -918,8 +933,8 @@ function verDiagnostico(){
 	$("#dialog").dialog({
 		autoOpen: true,
 		modal: true,
-		height: 640,
-		width: 940,
+		height: 660,
+		width: 960,
 		open: function(ev, ui){
 			//$('#myIframe').attr('src','diagnostico-biopsia.php');
 			$('#myIframe').attr('src',pagina);
@@ -951,7 +966,7 @@ function verDiagnostico(){
 		}, 1000);*/
 
 		carga_Catalogos_Dinamicos();
-        $("#tabs").tabs({ disabled: [ 1, 2, 3, 4, 5, 6, 7,8 ]});
+        $("#tabs").tabs({ disabled: [ 1, 2, 3, 10, 6, 7, 8, 9]});
 		try {
 			parent.endLoading();
 		} catch(e) {

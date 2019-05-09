@@ -48,7 +48,7 @@ foreach( $_POST as $key => $value ) {
 
 //seccion datos
 
-$dFechaInicioResistencia=isset($_REQUEST["dFechaInicioResistencia"])$_REQUEST["dFechaInicioResistencia"]:"";
+$dFechaInicioResistencia=isset($_REQUEST["dFechaInicioResistencia"])?$_REQUEST["dFechaInicioResistencia"]:"";
 $nivel_testosterona=isset($_REQUEST["nivel_testosterona"])?$_REQUEST["nivel_testosterona"]:"";
 $nivel_ape=isset($_REQUEST["nivel_ape"])?$_REQUEST["nivel_ape"]:"";
 $sOtroEstudioImagen=isset($_REQUEST["sOtroEstudioImagen"])?$_REQUEST["sOtroEstudioImagen"]:"";
