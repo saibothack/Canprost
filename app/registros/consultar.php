@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Documento sin título</title>
+    <title>Documento sin tï¿½tulo</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Librerias -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +16,10 @@
 <h1>Hospitales</h1>
 <fieldset>
     <section id="command-buttons" style="width: 98%; margin: auto;">
+        <br>
+        <form action="gen_excel.php" method="post" target="_blank" id="FormularioExportacion">
+            <button formtarget="_blank" class="btn btn-default boton excel" ><span class="glyphicon glyphicon-cloud-download"></span> Excel</button>
+        </form>
         <table id="grid-command-buttons" class="table table-condensed table-hover table-striped">
             <thead>
             <tr>
@@ -37,8 +41,8 @@
             </iframe>
         </div>
     </div>
-    <div id="dialog-confirm" title="Confirmación" style="width: 80%; height: 80%">
-        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>¿Esta seguro de eliminar el registro?</p>
+    <div id="dialog-confirm" title="Confirmaciï¿½n" style="width: 80%; height: 80%">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>ï¿½Esta seguro de eliminar el registro?</p>
     </div>
 </fieldset>
 <!--jquery-->

@@ -149,12 +149,19 @@ $_SESSION['rfc']="";
 					<script>
 						function validaFecha(){
 							var d = $("#campo_7").val()
+                            console.log($("#dNacimientoD").datepicker("getDate"));
+                            console.log(d);
+
 							if(d <= $("#dNacimientoD").val()){
-								$("#divAnioDiagnostico").addClass('has-error')
+                                console.log("1");
+                                jAlert('La fecha de nacimiento es menor al año de diagnostico');
+								$("#campo_7").addClass('has-error')
 								$("#campo_7").val('')
 								$("#campo_7").focus()
 							}else{
+                                console.log("2");
 								if(d > <?php echo date("Y")?>){
+                                    console.log("3");
 									$("#campo_7").addClass('has-error')
 									$("#campo_7").val('')
 									$("#campo_7").focus()

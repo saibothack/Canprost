@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 /**
  * Created by PhpStorm.
  * User: Administrator
@@ -17,16 +17,41 @@ $rowcount = $_REQUEST["rowCount"];
 $search = $_REQUEST["searchPhrase"];
 //$current = $_REQUEST["current"];
 
+
 $inicia = (($current - 1) *  $rowcount);
 
 if ($search) {
     $sql = "select r.ID_REGISTRO as id, 	CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' ')) AS sNombre, r.CRNUMERO_REGISTRO, DATE_FORMAT(r.CRFECHA_INICIO, '%d/%m/%Y') as sFechaRegistro, h.HOSPITAL as sNombreHospital
-	from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL WHERE CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' '))  LIKE '%{$search}%';";
-    $sqlcount = "SELECT COUNT(*) as cuenta from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL WHERE CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' '))  LIKE '%{$search}%';";
+	from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL WHERE CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' '))  LIKE '%{$search}%'";
+    $sqlcount = "SELECT COUNT(*) as cuenta from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL WHERE CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' '))  LIKE '%{$search}%'";
+
+    if ($_SESSION["TIPO"] == 2) {
+        $sql = $sql . " AND u.ID_USUARIO = {$_SESSION["ID_USUARIO"]}";
+        $sqlcount = $sqlcount . " AND u.ID_USUARIO = {$_SESSION["ID_USUARIO"]};";
+    }
+
+    $sql = $sql . " ORDER BY r.ID_REGISTRO DESC;";
 } else {
-    $sql = "select r.ID_REGISTRO as id, CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' ')) AS sNombre, r.CRNUMERO_REGISTRO, DATE_FORMAT(r.CRFECHA_INICIO, '%d/%m/%Y') as sFechaRegistro, h.HOSPITAL as sNombreHospital from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL LIMIT {$inicia}, {$rowcount};";
-    $sqlcount = "SELECT COUNT(*) as cuenta from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL;";
+    $sql = "select r.ID_REGISTRO as id, CONCAT(IFNULL(CONCAT(r.CRNOMBRE,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_PATERNO,' '),' '),IFNULL(CONCAT(r.CRAPELLIDO_MATERNO,' '),' ')) AS sNombre, r.CRNUMERO_REGISTRO, DATE_FORMAT(r.CRFECHA_INICIO, '%d/%m/%Y') as sFechaRegistro, h.HOSPITAL as sNombreHospital from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL";
+    $sqlcount = "SELECT COUNT(*) as cuenta from cantprosdb.C_REGISTROS r inner join cantprosdb.C_USUARIOS u on u.ID_USUARIO=r.CRUSUARIO_INICIO inner join cantprosdb.C_HOSPITALES h on h.ID_HOSPITAL=u.CUHOSPITAL";
+
+    if ($_SESSION["TIPO"] == 2) {
+        $sql = $sql . " WHERE u.ID_USUARIO = {$_SESSION["ID_USUARIO"]}";
+        $sqlcount = $sqlcount . " WHERE u.ID_USUARIO = {$_SESSION["ID_USUARIO"]};";
+    }
+
+    $sql = $sql . " ORDER BY r.ID_REGISTRO DESC LIMIT {$inicia}, {$rowcount};";
+    //$sql = $sql . " ORDER BY r.ID_REGISTRO DESC LIMIT 0, 7;";
 }
+
+
+//echo $sql;
+//echo $sqlcount;
+
+//echo $_SESSION["TIPO"];
+//exit();
+
+
 
 //print($sql);
 //die();

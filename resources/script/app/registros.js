@@ -324,6 +324,12 @@ function validaMultiSelect(campo){
 						mostrarOcultarSeccion("divTratamientoPreventivoOtro",false);
 				}
 					break;
+
+				case oCat_Registro["CAT_ANIO_DE_DIAGNOSTICO"]:
+				{
+					validaFecha();
+				}
+					break;
 			}
 		}
 	}
@@ -538,7 +544,9 @@ function validaRfc(){
 			data: $("#form_registro").serialize(),// {rfc:$("#sRFC").val()},
 			success: function(data) {
 				//alert(data);
-				if(data > " "){
+
+				console.log("validaRfc");
+								if(data > " "){
 					$("#btnDiagnostico").show();
 					//window.location = "agregar.php?#tabs-3";
 					var tipoRecurrente = $('input[name=sRecurrente]:checked').val();
@@ -567,6 +575,14 @@ function validaRfc(){
 							$("#sApellidoMaternoD").val(sApM);
 							$("#sNombresD").val(sNom);
 							$("#dNacimientoD").val(sNac);
+
+							fecha = $("#dNacimiento").datepicker("getDate");
+
+							console.log(fecha);
+
+							if (fecha != null) {
+								$("input[type=date]").datepicker( "option", "minDate", fecha);
+							}
 							
 						});
 					///}else{
@@ -609,6 +625,12 @@ function validaRfc(){
 					$("#sApellidoMaternoD").val(sApM);
 					$("#sNombresD").val(sNom);
 					$("#dNacimientoD").val(sNac);
+
+					fecha = $("#dNacimiento").datepicker("getDate");
+					console.log(fecha);
+					if (fecha != null) {
+						$("input[type=date]").datepicker( "option", "minDate", fecha);
+					}
 				}
 			}
 		});
@@ -1177,6 +1199,7 @@ function verDiagnostico(){
 
 	function convertToDate() 
 	{
+		console.log("convertToDate");
 		$("input[type=date]").datepicker({ dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true, yearRange: "-100:+0", });
 		$("input[type=date]").attr("readonly", true);
 	}
