@@ -61,7 +61,35 @@ SELECT C_METASTASIS.CRFECHA_LHRH as VALOR,  'form_metastasis.dFechaInicioLHRH' A
  UNION ALL
 SELECT C_METASTASIS.CRFECHA_ORQUITECT as VALOR,  'form_metastasis.dFechaOrquiectomia' AS propiedad FROM cantprosdb.C_METASTASIS where id_registro=$idRegistro 
  UNION ALL
-SELECT C_METASTASIS.CRNUMERO_CONSULTAS as VALOR,  'form_metastasis.sNumeroCcnsultas' AS propiedad FROM cantprosdb.C_METASTASIS where id_registro=$idRegistro 
+
+
+SELECT C_METASTASIS.CR_DATE_INICIO_APE as VALOR,  'form_metastasis.dFechaInicioApe' AS propiedad FROM cantprosdb.C_METASTASIS where id_registro=$idRegistro
+ UNION ALL
+SELECT C_METASTASIS.CR_APE_BLOQUEO_HORMONAL as VALOR,  'form_metastasis.ApeBloqueoHormonal' AS propiedad FROM cantprosdb.C_METASTASIS where id_registro=$idRegistro
+ UNION ALL
+SELECT C_METASTASIS.CR_DATE_FIN_APE as VALOR,  'form_metastasis.dFechaFinApe' AS propiedad FROM cantprosdb.C_METASTASIS where id_registro=$idRegistro
+ UNION ALL
+ 
+SELECT C_SEGUIMIENTO.CRFECHA_INICIO_SEGUIMIENTO as VALOR,  'form_seguimiento.dFechaInicioSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CRFECHA_INICIO_RESIST as VALOR,  'form_seguimiento.dFechaInicioResistenciaSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CRNIVEL_TESTOSTERONA as VALOR,  'form_seguimiento.nivel_testosteronaSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CRNIVEL_APE as VALOR,  'form_seguimiento.nivel_apeSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CROTRO_ESTUDIO_IMAGEN as VALOR,  'form_seguimiento.sOtroEstudioImagenSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CRFECHA_INICIO_QUIMIO as VALOR,  'form_seguimiento.dFechaInicioQuimioSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CROTRO_TRAT_SEGUNDA as VALOR,  'form_seguimiento.sOtroTratamientoSegundaSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CROTRO_QUIMIO as VALOR,  'form_seguimiento.sOtroQuimioterapiaSeg' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro
+ UNION ALL
+SELECT C_SEGUIMIENTO.CRNUMERO_CONSULTAS as VALOR,  'form_seguimiento.sNumeroConsultas' AS propiedad FROM cantprosdb.C_SEGUIMIENTO where id_registro=$idRegistro 
+
+
+
  UNION ALL
 SELECT C_METASTASIS.CRTIPO_ANTIANDROGENO as VALOR,  'form_metastasis.sCualAntiandrogeno' AS propiedad FROM cantprosdb.C_METASTASIS where id_registro=$idRegistro 
  UNION ALL

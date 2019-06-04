@@ -60,8 +60,12 @@ $dFechaInicioAntiAndrogeno=isset($_REQUEST["dFechaInicioAntiAndrogeno"])?$_REQUE
 $sCualBloqueHormonal=isset($_REQUEST["sCualBloqueHormonal"])?$_REQUEST["sCualBloqueHormonal"]:"";
 $APENadirPostBloqueo=isset($_REQUEST["APENadirPostBloqueo"])?$_REQUEST["APENadirPostBloqueo"]:"";
 $chkDesconocido=isset($_REQUEST["chkDesconocido"])?$_REQUEST["chkDesconocido"]:"";
-$dFechametastasis=isset($_REQUEST["dFechametastasis"])?$_REQUEST["dFechametastasis"]:"";
+//$dFechametastasis=isset($_REQUEST["dFechametastasis"])?$_REQUEST["dFechametastasis"]:"";
 
+
+$dFechaInicioApe=($_REQUEST["dFechaInicioApe"] != "") ? $_REQUEST["dFechaInicioApe"] : "NULL";
+$ApeBloqueoHormonal=($_REQUEST["ApeBloqueoHormonal"] != "") ? $_REQUEST["ApeBloqueoHormonal"] : "";
+$dFechaFinApe=($_REQUEST["dFechaFinApe"] != "") ? $_REQUEST["dFechaFinApe"] : "NULL";
 /*
 $sql="UPDATE cantprostdbC_REGISTROS SET  CRFECHA_CIRUGIA='$dCirugia',CRCOMPLICACION_ESPECIFICA='$iEspecificar',
 CRCOMPLICACION_MOTIVO='$sMotivo',CRETAPA_PATOLOGICA='$sEtapaPatologica',CRGLEASON_1='$iGleason1',
@@ -75,7 +79,8 @@ mysqli_query($conexion,$sql);
 $sql="DELETE FROM cantprosdb.C_METASTASIS WHERE ID_REGISTRO=$IdRegistro;";
 mysqli_query($conexion,$sql);
 
-$sql="INSERT INTO cantprosdb.C_METASTASIS (ID_REGISTRO,CRFECHA_ORQUITECT,CRTIPO_LHRH,CRFECHA_LHRH,CRFECHAINICIO_ANTAG_LHRH,CRTIPO_ANTIANDROGENO,CRDOSIS_ANTIANDROGENO,CRFECHAINICIO_ANTIANDROGENO,CRTIPO_BLOQUEHORMONAL,CRAPE_NADIR_POSTBLOQUEO,CR_DESCONOCIDO,CR_DATE_METASTASIS) VALUES($IdRegistro, $dFechaOrquiectomia,'$sCualLHRH','$dFechaInicioLHRH','$dFechaInicioAntagonistaLHRH','$sCualAntiandrogeno','$sDosisAntiandrogeno','$dFechaInicioAntiAndrogeno','$sCualBloqueHormonal','$APENadirPostBloqueo','$chkDesconocido','$dFechametastasis');";
+$sql="INSERT INTO cantprosdb.C_METASTASIS (ID_REGISTRO,CRFECHA_ORQUITECT,CRTIPO_LHRH,CRFECHA_LHRH,CRFECHAINICIO_ANTAG_LHRH,CRTIPO_ANTIANDROGENO,CRDOSIS_ANTIANDROGENO,CRFECHAINICIO_ANTIANDROGENO,CRTIPO_BLOQUEHORMONAL,CRAPE_NADIR_POSTBLOQUEO,CR_DESCONOCIDO,CR_DATE_METASTASIS, CR_DATE_INICIO_APE, CR_APE_BLOQUEO_HORMONAL, CR_DATE_FIN_APE) VALUES($IdRegistro, $dFechaOrquiectomia,'$sCualLHRH','$dFechaInicioLHRH','$dFechaInicioAntagonistaLHRH','$sCualAntiandrogeno','$sDosisAntiandrogeno','$dFechaInicioAntiAndrogeno','$sCualBloqueHormonal','$APENadirPostBloqueo','$chkDesconocido',NULL,'$dFechaInicioApe','$ApeBloqueoHormonal','$dFechaFinApe');";
+
 mysqli_query($conexion,$sql);
 
 $error = mysqli_error($conexion);

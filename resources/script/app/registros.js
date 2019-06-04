@@ -76,6 +76,7 @@ oCat_Registro["REALIZADO_PET"]=73;
 oCat_Registro["REALIZADO_GGO"]=74;
 oCat_Registro["REALIZADO_TR"]=75;
 oCat_Registro["PREVIO"]=77;
+oCat_Registro["INTERMITENCIA"]=78;
 
 var sUrl="../../";
 var global_catalog_data=null;
@@ -787,6 +788,20 @@ function guardarProgresion(){
 		type: "POST",
 		url: sUrl+"app/php/registros/progresion.php",
 		data: $("#form_progresion").serialize(),// {rfc:$("#sRFC").val()},
+		success: function(data) {
+			$("#tabs").tabs("enable",11);
+			$("#tabs").tabs({ active:  11});
+		}
+	});
+	}
+}
+function guardarSeg(){
+	$('#form_seguimiento').validate();
+	if($('#form_seguimiento').valid()){
+	$.ajax({
+		type: "POST",
+		url: sUrl+"app/php/registros/seguimiento.php",
+		data: $("#form_seguimiento").serialize(),// {rfc:$("#sRFC").val()},
 		success: function(data) {
 			$("#tabs").tabs("enable",9);
 			$("#tabs").tabs({ active:  9});

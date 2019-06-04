@@ -41,16 +41,49 @@ if ($_SESSION['ID_USUARIO'] == "") {
                <div id="campoGleason">
                    <label for="iGleason" class="col-sm-2 control-label">Gleason</label>
                    <div class="col-sm-2">
-                       <input type="text" onkeypress="return isNumberKey(event)" name="iGleason1" id="iGleason1" min="1" max="10" maxlength="2" onchange="if (!isNaN(this.value)){$('#iGleasonsuma').val(parseFloat(this.value) + (!isNaN($('#iGleason2').val()) ? parseFloat($('#iGleason2').val()) : 0.0)); }" onblur="if (!isNaN(this.value)){$('#iGleasonsuma').val(parseFloat(this.value) + (!isNaN($('#iGleason2').val()) ? parseFloat($('#iGleason2').val()) : 0.0)); }" class="form-control">
+                       <input type="text" onkeypress="return isNumberKey(event)" name="iGleason1" id="iGleason1" min="1" max="10" maxlength="2" onchange="iGleason1V()" onblur="iGleason1V()" class="form-control">
                    </div>
                    <div class="col-sm-2">
-                       <input type="text" onkeypress="return isNumberKey(event)" name="iGleason2" id="iGleason2" min="1" max="10" maxlength="2" onchange="if (!isNaN(this.value)){$('#iGleasonsuma').val(parseFloat(this.value) + (!isNaN($('#iGleason1').val()) ? parseFloat($('#iGleason1').val()) : 0.0)); }" onblur="if (!isNaN(this.value)){$('#iGleasonsuma').val(parseFloat(this.value) + (!isNaN($('#iGleason1').val()) ? parseFloat($('#iGleason1').val()) : 0.0)); }" class="form-control">
+                       <input type="text" onkeypress="return isNumberKey(event)" name="iGleason2" id="iGleason2" min="1" max="10" maxlength="2" onchange="iGleason2V()" onblur="iGleason2V()" class="form-control">
                    </div>
                    <div class="col-sm-2">
                        <input type="text" name="iGleasonsuma" id="iGleasonsuma" readonly min="1" max="10" maxlength="2" class="form-control">
                    </div>
                </div>
                <script>
+                var arrIsu = [["2","-4","1"], 
+                ["3","4","2"],
+                ["4","3","3"], 
+                ["4","4","4"],
+                ["3","5","4"],
+                ["5","3","4"],
+                ["9","10","5"]];
+
+
+                function isuV(){
+                    var dato = 0;
+                    for(x=0;x< 7;x++){
+                        if(arrIsu[x][0] == $('#iGleason1').val() && arrIsu[x][1] == $('#iGleason2').val()){
+                            dato = arrIsu[x][2]
+                            break;
+                        }else{
+                            dato = ""
+                        }
+                    }
+                    $("#lblIsu").text("ISU " + dato)
+                }
+                function iGleason1V(){
+                    if (!isNaN($('#iGleason1').val())){
+                        $('#iGleasonsuma').val(parseFloat($('#iGleason1').val()) + (!isNaN($('#iGleason2').val()) ? parseFloat($('#iGleason2').val()) : 0.0));
+                        isuV()
+                    }
+                }
+                function iGleason2V(){
+                    if (!isNaN($('#iGleason2').val())){
+                        $('#iGleasonsuma').val(parseFloat($('#iGleason2').val()) + (!isNaN($('#iGleason1').val()) ? parseFloat($('#iGleason1').val()) : 0.0)); 
+                        isuV()
+                    }
+                }
 			   function isNumberKey(evt)
 				  {
 					 var charCode = (evt.which) ? evt.which : event.keyCode
@@ -62,6 +95,9 @@ if ($_SESSION['ID_USUARIO'] == "") {
 			   </script>
                <div class="col-sm-2">
                    <input type="radio" name="iGleasonDesconocido" id="iGleasonDesconocido" value="1" onchange="$('#iGleason1').val('');$('#iGleason2').val('');$('#iGleasonsuma').val('');" />Desconocido
+               </div>
+               <div class="col-sm-2">
+                   <label id="lblIsu"></label>
                </div>
 			</div>
             <hr style="border: solid 1px;" />
@@ -180,7 +216,8 @@ if ($_SESSION['ID_USUARIO'] == "") {
                     </select>
                 </div>
                 <div class="col-sm-offset-4 col-sm-2">
-                	<button type="button" class="btn btn-primary" onclick="window.open('../../docs/TNM-2016.pdf')" >TNM pdf</button>
+                	<!--<button type="button" class="btn btn-primary" onclick="window.open('../../docs/TNM-2016.pdf')" >TNM pdf</button>-->
+                    <button type="button" class="btn btn-primary" onclick="showTableM()" >TNM pdf</button>
                 </div>
 			</div>
 			<div class="form-group" >
@@ -215,6 +252,34 @@ if ($_SESSION['ID_USUARIO'] == "") {
 <!--steps-->
 <script src="../../resources/script/app/registros.js" type="text/javascript"></script>
 	
+<div id="dialog" title="TNM">
+    <img src="../../images/tab_met.png" />
+</div>
+<script>
+
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                "Aceptar": function () {
+                    $(this).dialog("close");
+                }/*,
+                "Cerrar": function () {
+                    $(this).dialog("close");
+                }*/
+            }
+        });
+    });
+
+    function showTableM() {
+        $("#dialog").dialog("option", "width", 800);
+        $("#dialog").dialog("option", "height", 700);
+        $("#dialog").dialog("option", "resizable", false);
+        $("#dialog").dialog("open");
+    }
+</script>
+
 <script>
     function asignarValoresRegistros(){
         <?php

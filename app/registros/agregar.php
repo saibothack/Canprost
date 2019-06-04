@@ -43,7 +43,8 @@ $_SESSION['rfc']="";
 			<li><a href="#tabs-6">4 Metástasis</a></li>
 			<li><a href="#tabs-7">5 Progresión</a></li>
 			<li><a href="#tabs-8" hidden>7 Ningún tratamiento</a></li>
-			<li><a href="#tabs-9">6 Estatus</a></li>
+			<li><a href="#tabs-11">6 Seguimiento</a></li>
+			<li><a href="#tabs-9">7 Estatus</a></li>
 		</ul>
 		<!--Inicia seccion nuevo-->
 		<div id="tabs-1">
@@ -989,12 +990,6 @@ $_SESSION['rfc']="";
 
 			<form class="form-horizontal" id="form_metastasis">
                 <div class="form-group">
-                    <label for="dFechaOrquiectomia" class="col-sm-2 control-label">Fecha de Inicio <span class="required-label">*</span></label>
-                    <div class="col-sm-4">
-                        <input type="date" class="form-control" name="dFechametastasis" id="dFechametastasis" placeholder="Fecha de Inicio" >
-                    </div>
-                </div>
-                <div class="form-group">
 					<label for="iOrquiectomia" class="col-sm-2 control-label">Orquiectomía</label>
 					<div id="rg_campo_52">
 					<!--<div class="col-sm-1">
@@ -1135,6 +1130,40 @@ $_SESSION['rfc']="";
 						<input type="number" class="form-control" name="APENadirPostBloqueo" id="APENadirPostBloqueo" placeholder="APE" required>
 					</div>
 				</div>
+
+
+                <div class="form-group">
+                    <label for="dFechaInicioApe" class="col-sm-2 control-label">Fecha inicio APE nadir </label>
+                    <div class="col-sm-4"><!--dFechametastasis-->
+                        <input type="date" class="form-control" name="dFechaInicioApe" id="dFechaInicioApe" placeholder="Fecha inicio APE nadir" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ApeBloqueoHormonal" class="col-sm-2 control-label">APE nadir post-Bloqueo Hormonal</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" name="ApeBloqueoHormonal" id="ApeBloqueoHormonal" placeholder="Post-Bloqueo Hormonal" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dFechaFinApe" class="col-sm-2 control-label">Fecha conclusión APE nadir </label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="dFechaFinApe" id="dFechaFinApe" placeholder="Fecha inicio APE nadir" >
+                    </div>
+                </div>
+                <div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Intermitencia</label>
+					<!--<div class="col-sm-1">
+						<label><input type="radio" name="chkIntermitencia">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="radio" name="chkIntermitencia">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="radio" name="chkIntermitencia">Desconocido</label>
+					</div>-->
+					<div id="rg_campo_78"></div>
+                </div>
+
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Quimioterapia</label>
 					<div id="rg_campo_57">
@@ -1479,6 +1508,151 @@ $_SESSION['rfc']="";
             </form>
         </div>
         <!--termina seccion metastasis-->
+
+        <!--Empieza seccion seguimiento-->
+		<div id="tabs-11">
+			<form class="form-horizontal" id="form_seguimiento">
+				<div class="form-group">
+                    <label for="dFechaInicioSeg" class="col-sm-2 control-label">Fecha inicio Seguimiento </label>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control" name="dFechaInicioSeg" id="dFechaInicioSeg" placeholder="Fecha inicio APE nadir" >
+                    </div>
+                </div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Resistencia a la Castración</label>
+					<div id="rg_campo_79">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+					<label class="col-sm-2 control-label">Fecha de inicio de Resistencia a la Castración <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaInicioResistenciaSeg" id="dFechaInicioResistenciaSeg" placeholder="Fecha de inicio de Resistencia a la Castración" >
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Nivel de Testosterona</label>
+					<div class="col-sm-4">
+						<input type="number" name="nivel_testosteronaSeg"  id="nivel_testosteronaSeg" class="form-control">
+					</div>
+					<label class="col-sm-2 control-label">Nivel de APE <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="number" class="form-control" id="nivel_apeSeg" name="nivel_apeSeg" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Estudio de imagen</label>
+					<div id="rg_campo_80">
+					<!--
+					<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Cuál <span class="required-label">*</span></label>
+					<div id="chk_campo_81" class="col-sm-4">
+					<!--<div class="col-sm-4">
+						<label><input type="checkbox">TAC</label>
+						<label><input type="checkbox">PET</label>
+						<label><input type="checkbox">GGO</label>
+						<label><input type="checkbox">RMI</label>
+						<label><input type="checkbox">Otro</label>-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Especificar otro</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="sOtroEstudioImagenSeg" id="sOtroEstudioImagenSeg" maxlength="50">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Tratamiento de segunda línea <span class="required-label">*</span></label>
+					<div id="rg_campo_82">
+					<!--<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Cuál</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="campo_83" name="campo_83" onchange="especificarSegundaLineaSeg()">
+							<!--<option value="" class="form-control">Seleccione</option>
+							<option value="1" class="form-control">Retiro de anti-andrógeno</option>
+							<option value="2" class="form-control">DES</option>
+							<option value="3" class="form-control">Ketoconazol</option>
+							<option value="1" class="form-control">Abiraterona</option>
+							<option value="2" class="form-control">Enzalutamida</option>
+							<option value="3" class="form-control">Otro</option>-->
+						</select>
+					</div>
+					<div id="divEspecificarSegundaLineaSeg" style="display: none;" hidden="">
+						<label for="inputEmail3" class="col-sm-2 control-label">Especificar otro</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" name="sOtroTratamientoSegundaSeg" id="sOtroTratamientoSegundaSeg" maxlength="50">
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript" >
+					function especificarSegundaLineaSeg(){
+						if($('#campo_83').val() == 6){
+							$("#divEspecificarSegundaLineaSeg").show()
+						}else{
+							$("#divEspecificarSegundaLineaSeg").hide()
+						}
+					}
+				</script>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Quimioterapia <span class="required-label">*</span></label>
+					<div id="rg_campo_84">
+					<!--
+					<div class="col-sm-1">
+						<label><input type="checkbox">Si</label>
+					</div>
+					<div class="col-sm-1">
+						<label><input type="checkbox">No</label>
+					</div>
+					<div class="col-sm-2">
+						<label><input type="checkbox">Desconocido</label>-->
+					</div>
+					<div hidden>
+					<label for="inputEmail3" class="col-sm-2 control-label">Especificar otro</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="sOtroQuimioterapiaSeg" name="sOtroQuimioterapiaSeg" maxlength="50">
+					</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Fecha de inicio Quimioterapia <span class="required-label">*</span></label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" name="dFechaInicioQuimioSeg" id="dFechaInicioQuimioSeg" placeholder="Fecha de inicio Quimioterapia" >
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-9 col-sm-3">
+						<button type="button" class="btn btn-danger" id="regresarGeneral">Regresar</button>
+						<button type="button" class="btn btn-primary" id="continuarGeneral" onclick="guardarSeg()">Continuar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--termina seccion seguimiento-->
 	</div>
 	
 	<!--boostrap-->

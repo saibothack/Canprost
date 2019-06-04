@@ -298,7 +298,8 @@ if ($_SESSION['ID_USUARIO'] == "") {
                 </select>
             </div>
             <div class="col-sm-offset-4 col-sm-2">
-				<button type="button" class="btn btn-primary" onclick="window.open('../../docs/TNM-2016.pdf')" >TNM pdf</button>
+				<!--<button type="button" class="btn btn-primary" onclick="window.open('../../docs/TNM-2016.pdf')" >TNM pdf</button>-->
+                    <button type="button" class="btn btn-primary" onclick="showTableM()" >TNM pdf</button>
 			</div>
 		</div>
         <div class="form-group" >
@@ -372,6 +373,35 @@ if ($_SESSION['ID_USUARIO'] == "") {
 <script src="../../resources/script/jquery.alerts.js"></script>
 <!--steps-->
 <script src="../../resources/script/app/registros.js" type="text/javascript"></script>
+
+<div id="dialog" title="TNM">
+    <img src="../../images/tab_met.png" />
+</div>
+<script>
+
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                "Aceptar": function () {
+                    $(this).dialog("close");
+                }/*,
+                "Cerrar": function () {
+                    $(this).dialog("close");
+                }*/
+            }
+        });
+    });
+
+    function showTableM() {
+        $("#dialog").dialog("option", "width", 800);
+        $("#dialog").dialog("option", "height", 700);
+        $("#dialog").dialog("option", "resizable", false);
+        $("#dialog").dialog("open");
+    }
+</script>
+
 <script>
     function asignarValoresRegistros(){
         <?php
