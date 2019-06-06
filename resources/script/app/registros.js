@@ -132,6 +132,10 @@ function cargaRegistroSeleccionado(idRegistro,dato){
 								campo.val(element["VALOR"]);
 							}
 							campo.trigger("change");
+					
+							if(nombrecampo == "iGleason1" || nombrecampo == "iGleason2"){
+								isuV();
+							}
 						});
 						if(w_ind == 0){
 							//alert(nombrecampo + " %% " + element["VALOR"])
@@ -180,6 +184,9 @@ function cargaRegistroSeleccionado(idRegistro,dato){
 								$(campo1).trigger("change");
 							}
 						});
+						if(nombrecampo == "iGleason1" || nombrecampo == "iGleason2"){
+							isuV();
+						}
 					}
 				}catch(ex){
 					console.log("Error:" + ex)
